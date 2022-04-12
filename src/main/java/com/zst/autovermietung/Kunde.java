@@ -92,9 +92,9 @@ public class Kunde extends Person {
         return alleMietvertraege;
     }
 
-    public Mietvertrag findeMietvertagNachId(String id) {
+    /*public Mietvertrag findeMietvertagNachId(String id) {
         ////
-    }
+    }*/
 
     @Override
     public String toString() {
