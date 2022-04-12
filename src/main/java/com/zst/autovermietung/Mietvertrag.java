@@ -24,7 +24,7 @@ public class Mietvertrag{
     }
 
     //private de olabilir
-    public void berechneMiete(float taglicheMiete, Date start, Date end){
+    public void berechneMiete(float taglicheMiete, Date start, Date end) {
         //miete =  (enddatum-startdatum)* auto.getMiete();
     }
 
