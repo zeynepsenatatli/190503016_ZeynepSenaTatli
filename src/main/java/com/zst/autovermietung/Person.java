@@ -101,4 +101,14 @@ public abstract class Person{
     }
 
     public abstract String toString();
+
+    @Override
+    public boolean equals(Object o) {
+        Person p = (Person) o;
+        if(this.tr_id.equals(p.getId())){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

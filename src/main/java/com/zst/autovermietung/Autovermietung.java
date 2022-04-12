@@ -49,7 +49,9 @@ public class Autovermietung{
         // verwendet. danach kann getKunde richtige Kunde
         //zurückgeben
 
-        //return kunde;
+        int index = findeKunde(id);
+
+        return kunden.get(index);
     }
 
     public Auto getAuto(String nummernschild){
@@ -58,31 +60,33 @@ public class Autovermietung{
         // verwendet. danach kann getAuto richtige Auto
         //zurückgeben
 
-        //return auto;
+        int index = findeAuto(nummernschild);
+        return autos.get(index);
     }
 
     public Mietvertrag getVertraege(String id){
         // gleiche Gedanke wie oben
 
-        //return mietvertrag;
+        int index = findeMietvertrag(id);
+        return mietvertraege.get(index);
     }
 
     public Mietvertrag getVorgangeneVertraege(String id){
         // gleiche Gedanke wie oben
 
-        //return m;
+        int index = findeVorgegangeneMietvertrag(id);
+        return vorgangeneMietvertraege.get(index);
     }
 
     public Mitarbeiter getMitarbeiter(String id){
         // gleiche Gedanke wie oben
 
-        //return mitarbeiter;
+        int index = findeMitarbeiter(id);
+        return mitarbeiter.get(index);
     }
 
-    public Manager getManager(String id){
-        // gleiche Gedanke wie oben
-
-        //return m;
+    public Manager getManager(){
+        return manager;
     }
 
     public boolean removeKunde(String id){
@@ -115,20 +119,73 @@ public class Autovermietung{
     }
 
     public int findeAuto(String nummernschild){
-        return 0; //index_of_auto;
+        int index = -1;
+        for(int i = 0; i < autos.size(); i++){
+            if(autos.get(i).getNummernschild().equals(nummernschild)){
+                index = i;
+                i = autos.size();
+            }
+        }
+        if(index < 0){
+            // exception - Es gibt keine Auto mit diesem Nummernschild
+        }
+        return index;
     }
 
     public int findeKunde(String id){
-        return 0; //index_of_kunde;
+        int index = -1;
+        for(int i = 0; i < kunden.size(); i++){
+            if(kunden.get(i).getId().equals(id)){
+                index = i;
+                i = kunden.size();
+            }
+        }
+        if(index < 0){
+            // exception - Es gibt keine Kunde mit diesem ID
+        }
+        return index;
     }
 
     public int findeMitarbeiter(String id){
-        return 0; // index_of_mitarbeiter;
+        int index = -1;
+        for(int i = 0; i < mitarbeiter.size(); i++){
+            if(mitarbeiter.get(i).getId().equals(id)){
+                index = i;
+                i = mitarbeiter.size();
+            }
+        }
+        if(index < 0){
+            // exception - Es gibt keine Mitarbeiter mit diesem ID
+        }
+        return index;
     }
 
     public int findeMietvertrag(String id){
-        return 0; //index_of_mietvertrag;
+        int index = -1;
+        for(int i = 0; i < mietvertraege.size(); i++){
+            if(mietvertraege.get(i).getVertraId().equals(id)){
+                index = i;
+                i = mietvertraege.size();
+            }
+        }
+        if(index < 0){
+            // Warning- es gibt keine Mietvertrag mit diesem Vertrag-ID
+        }
+        return index;
     }
 
+    public int findeVorgegangeneMietvertrag(String id){
+        int index = -1;
+        for(int i = 0; i < vorgangeneMietvertraege.size(); i++){
+            if(vorgangeneMietvertraege.get(i).getVertraId().equals(id)){
+                index = i;
+                i = vorgangeneMietvertraege.size();
+            }
+        }
+        if(index < 0){
+            // Warning- es gibt keine Mietvertrag mit diesem Vertrag-ID
+        }
+        return index;
+    }
 
 }
