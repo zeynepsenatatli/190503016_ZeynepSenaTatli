@@ -73,7 +73,7 @@ public class Mietvertrag{
     }
 
     public Auto getAuto(){
-        //return Auto;
+        return null;
     }
 
     public void setKunde(Kunde kunde){
@@ -81,7 +81,7 @@ public class Mietvertrag{
     }
 
     public Kunde getKunde(){
-        //return Kunde;
+        return null;
     }
 
     public void setVerantwortlicheMitarbeiter(Mitarbeiter mitarbeiter){
@@ -89,7 +89,7 @@ public class Mietvertrag{
     }
 
     public Mitarbeiter getVerantwortlicheMitarbeiter(){
-        //return Mitarbeiter;
+        return null;
     }
 
     public void setProblembezeichnung(String problem){

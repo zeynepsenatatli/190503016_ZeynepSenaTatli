@@ -28,8 +28,8 @@ public class Mitarbeiter extends Benutzer{
         return erstellteMietvertraege;
     }
 
-    public Mietvertrag findeMietvertagNachId(String id){
+    /*public Mietvertrag findeMietvertagNachId(String id){
         ////
-    }
+    }*/
 
 }
