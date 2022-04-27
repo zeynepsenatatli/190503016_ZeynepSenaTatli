@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="690.0" style="-fx-background-color: #EAEFF3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.AutoScreenController">
+   <children>
+      <Label layoutX="23.0" layoutY="14.0" text="Auto-Verwaltung" textFill="#101861">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TabPane layoutX="23.0" layoutY="41.0" prefHeight="152.0" prefWidth="644.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="neue Auto hinzufügen">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField layoutX="14.0" layoutY="29.0" prefHeight="26.0" prefWidth="121.0" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Nummernschild" />
+                        <TextField layoutX="14.0" layoutY="78.0" prefHeight="26.0" prefWidth="122.0" />
+                        <Label layoutX="14.0" layoutY="62.0" text="Kilometerstand" />
+                        <TextField layoutX="166.0" layoutY="29.0" prefHeight="26.0" prefWidth="121.0" />
+                        <Label layoutX="166.0" layoutY="14.0" text="Marke" />
+                        <TextField layoutX="166.0" layoutY="78.0" prefHeight="26.0" prefWidth="121.0" />
+                        <Label layoutX="166.0" layoutY="62.0" text="Modell" />
+                        <TextField layoutX="311.0" layoutY="29.0" prefHeight="26.0" prefWidth="121.0" />
+                        <Label layoutX="311.0" layoutY="14.0" text="Farbe" />
+                        <TextField layoutX="311.0" layoutY="78.0" prefHeight="26.0" prefWidth="121.0" />
+                        <Label layoutX="311.0" layoutY="62.0" text="Baujahr" />
+                        <Button layoutX="505.0" layoutY="78.0" mnemonicParsing="false" text="hinzufügen" />
+                        <ChoiceBox fx:id="verfugbarkeit" layoutX="468.0" layoutY="30.0" prefWidth="150.0" />
+                        <Label layoutX="468.0" layoutY="14.0" text="ist verfügbar?" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Auto löschen">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <Label layoutX="36.0" layoutY="205.0" text="Autos" textFill="#101861">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
