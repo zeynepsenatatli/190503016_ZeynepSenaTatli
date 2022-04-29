@@ -22,10 +22,10 @@ public class HomePageController {
         screen.getChildren().add(autoScreen.load());
     }
 
-    public void rechnungVerwaltung() throws IOException {
-        FXMLLoader rechnungScreen = new FXMLLoader(HelloApplication.class.getResource("rechnung-screen.fxml"));
+    public void mietvertragVerwaltung() throws IOException {
+        FXMLLoader mietvertragScreen = new FXMLLoader(HelloApplication.class.getResource("mietvertrag-screen.fxml"));
         screen.getChildren().removeAll();
-        screen.getChildren().add(rechnungScreen.load());
+        screen.getChildren().add(mietvertragScreen.load());
     }
 
     public void kundeVerwaltung() throws IOException {

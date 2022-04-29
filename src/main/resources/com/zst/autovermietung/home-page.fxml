@@ -23,7 +23,7 @@
             <Button fx:id="homepageButton" layoutX="46.0" layoutY="162.0" mnemonicParsing="false" onAction="#firstHomePage" text="Homepage" AnchorPane.leftAnchor="48.4" AnchorPane.rightAnchor="48.4" />
             <Button fx:id="autosButton" layoutX="60.0" layoutY="206.0" mnemonicParsing="false" onAction="#autoVerwaltung" text="Autos" AnchorPane.leftAnchor="62.4" AnchorPane.rightAnchor="62.4" />
             <Button fx:id="kundenButton" layoutX="55.0" layoutY="293.0" mnemonicParsing="false" onAction="#kundeVerwaltung" text="Kunden" AnchorPane.leftAnchor="57.6" AnchorPane.rightAnchor="57.6" />
-            <Button fx:id="rechnungButton" layoutX="42.0" layoutY="252.0" mnemonicParsing="false" onAction="#rechnungVerwaltung" prefHeight="26.0" prefWidth="87.0" text="Rechnungen" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.5" />
+            <Button fx:id="mietvertragButton" layoutX="42.0" layoutY="252.0" mnemonicParsing="false" onAction="#mietvertragVerwaltung" prefHeight="26.0" prefWidth="87.0" text="Mietverträge" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.5" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="66.0" prefHeight="18.0" prefWidth="112.0" text="USER">
                <cursor>
                   <Cursor fx:constant="NONE" />
