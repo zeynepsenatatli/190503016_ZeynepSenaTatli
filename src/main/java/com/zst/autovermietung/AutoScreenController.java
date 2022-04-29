@@ -1,21 +1,28 @@
 package com.zst.autovermietung;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
+import javafx.event.ActionEvent;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
-public class AutoScreenController implements Initializable {
+import javafx.stage.Stage;
 
-    @FXML
-    private ChoiceBox verfugbarkeit;
+import java.io.IOException;
 
+public class AutoScreenController {
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        verfugbarkeit.getItems().add("ja");
-        verfugbarkeit.getItems().add("nein");
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    public void openAddScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("auto-add-screen.fxml"));
+        root = (Parent) fxmlLoader.load();
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setTitle("neue Auto hinzufügen");
+        stage.setScene(scene);
+        stage.show();
     }
 }

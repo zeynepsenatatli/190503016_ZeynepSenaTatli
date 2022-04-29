@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.HomePageController">
    <children>
-      <AnchorPane layoutX="-3.0" layoutY="-3.0" prefHeight="58.0" prefWidth="858.0" style="-fx-background-color: #214565;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane prefHeight="58.0" prefWidth="858.0" style="-fx-background-color: #214565;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="25.0" layoutY="11.0" prefHeight="32.0" prefWidth="315.0" text="Autovermietung-System" textFill="#e49826">
                <font>
@@ -17,19 +17,19 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="screen" layoutX="168.0" layoutY="128.0" prefHeight="378.0" prefWidth="690.0" style="-fx-background-color: #EAEFF3;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="58.0" />
-      <AnchorPane layoutY="46.0" prefHeight="463.0" prefWidth="172.0" AnchorPane.topAnchor="58.0">
+      <AnchorPane fx:id="screen" layoutX="168.0" layoutY="128.0" prefHeight="378.0" prefWidth="690.0" style="-fx-background-color: #EAEFF3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="172.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="58.0" />
+      <AnchorPane layoutY="46.0" prefHeight="463.0" prefWidth="172.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="58.0">
          <children>
-            <Button fx:id="homepageButton" layoutX="46.0" layoutY="162.0" mnemonicParsing="false" onAction="#firstHomePage" text="Homepage" />
-            <Button fx:id="autosButton" layoutX="60.0" layoutY="206.0" mnemonicParsing="false" onAction="#autoVerwaltung" text="Autos" />
-            <Button fx:id="kundenButton" layoutX="55.0" layoutY="293.0" mnemonicParsing="false" onAction="#kundeVerwaltung" text="Kunden" />
-            <Button fx:id="rechnungButton" layoutX="42.0" layoutY="252.0" mnemonicParsing="false" onAction="#rechnungVerwaltung" text="Rechnungen" />
+            <Button fx:id="homepageButton" layoutX="46.0" layoutY="162.0" mnemonicParsing="false" onAction="#firstHomePage" text="Homepage" AnchorPane.leftAnchor="48.4" AnchorPane.rightAnchor="48.4" />
+            <Button fx:id="autosButton" layoutX="60.0" layoutY="206.0" mnemonicParsing="false" onAction="#autoVerwaltung" text="Autos" AnchorPane.leftAnchor="62.4" AnchorPane.rightAnchor="62.4" />
+            <Button fx:id="kundenButton" layoutX="55.0" layoutY="293.0" mnemonicParsing="false" onAction="#kundeVerwaltung" text="Kunden" AnchorPane.leftAnchor="57.6" AnchorPane.rightAnchor="57.6" />
+            <Button fx:id="rechnungButton" layoutX="42.0" layoutY="252.0" mnemonicParsing="false" onAction="#rechnungVerwaltung" prefHeight="26.0" prefWidth="87.0" text="Rechnungen" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.5" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="66.0" prefHeight="18.0" prefWidth="112.0" text="USER">
                <cursor>
                   <Cursor fx:constant="NONE" />
                </cursor>
             </Label>
-            <Button fx:id="logoutButton" layoutX="56.0" layoutY="403.0" mnemonicParsing="false" text="Log out" />
+            <Button fx:id="logoutButton" layoutX="56.0" layoutY="403.0" mnemonicParsing="false" onAction="#logOut" text="Log out" AnchorPane.leftAnchor="57.2" AnchorPane.rightAnchor="57.2" />
          </children>
       </AnchorPane>
    </children>

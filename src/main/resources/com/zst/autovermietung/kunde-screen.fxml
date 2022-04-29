@@ -12,7 +12,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="34.0" layoutY="62.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="162.0" text="neue Kunde hinzufügen" />
+      <Button fx:id="kundeAddButton" layoutX="34.0" layoutY="62.0" mnemonicParsing="false" onAction="#openAddScreen" prefHeight="55.0" prefWidth="162.0" text="neue Kunde hinzufügen" />
       <Button layoutX="212.0" layoutY="62.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="162.0" text="Kunde löschen" />
    </children>
 </AnchorPane>
