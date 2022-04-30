@@ -2,17 +2,31 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="kundeScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="690.0" style="-fx-background-color: #EAEFF3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.KundeScreenController">
+<AnchorPane fx:id="kundeScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="690.0" style="-fx-background-color: #EAEFF3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.KundeScreenController">
    <children>
       <Label layoutX="34.0" layoutY="24.0" text="Kunde-Verwaltung" textFill="#101861">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="kundeAddButton" layoutX="34.0" layoutY="62.0" mnemonicParsing="false" onAction="#openAddScreen" prefHeight="55.0" prefWidth="162.0" text="neue Kunde hinzufügen" />
-      <Button layoutX="212.0" layoutY="62.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="162.0" text="Kunde löschen" />
+      <Button fx:id="kundeAddButton" layoutX="126.0" layoutY="61.0" mnemonicParsing="false" onAction="#openAddScreen" prefHeight="27.0" prefWidth="149.0" text="neue Kunde hinzufügen" />
+      <Button layoutX="379.0" layoutY="61.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="149.0" text="Kunde löschen" />
+      <TableView fx:id="kundeTable" layoutX="14.0" layoutY="119.0" prefHeight="324.0" prefWidth="662.0">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="62.399996757507324" text="TR ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="55.999969482421875" text="Name" />
+            <TableColumn fx:id="nachnameColumn" prefWidth="73.5999755859375" text="Nachname" />
+            <TableColumn fx:id="geburtsdatumColumn" prefWidth="97.59996032714844" text="Geburtsdatum" />
+            <TableColumn fx:id="datumFuhrerscheinColumn" prefWidth="147.2000732421875" text="Datum von Führerschein" />
+            <TableColumn fx:id="telefonnummerColumn" prefWidth="100.800048828125" text="Telefonnummer" />
+            <TableColumn fx:id="geschlechtColumn" prefWidth="75.20001220703125" text="Geschlecht" />
+            <TableColumn fx:id="adressColumn" minWidth="7.199951171875" prefWidth="44.800048828125" text="Adress" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
