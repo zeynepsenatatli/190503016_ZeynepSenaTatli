@@ -1,11 +1,19 @@
 package com.zst.autovermietung;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.*;
 
 
 public class DBautovermietung {
     public  static Connection conn = null;
-    public static Statement stmt;
+    public  Statement stmt;
 
     public void connect() {
         try {
@@ -15,8 +23,8 @@ public class DBautovermietung {
             conn = DriverManager.getConnection(url);
 
             System.out.println("Connection to SQLite has been established.");
-            stmt = conn.createStatement();
-            /*ResultSet res = stmt.executeQuery("SELECT * FROM Person");
+            /*stmt = conn.createStatement();
+            ResultSet res = stmt.executeQuery("SELECT * FROM Person");
             if(res.next()){
                 System.out.println("username: "+res.getString("Name")+" Pass: "+res.getString("Nachname"));
             }*/
@@ -26,18 +34,23 @@ public class DBautovermietung {
         }
     }
 
-    /*public ObservableList<Kunde> getKunde() throws SQLException {
-        ResultSet kundenList = stmt.executeQuery("SELECT * FROM Kunde");
-        ObservableList<Kunde> kunden = FXCollections.observableArrayList();
-        if(kundenList.next()) {
-            java.util.Date gd = new java.util.Date(kundenList.getString("Geburtsdatum"));
-            java.util.Date fschein = new java.util.Date(kundenList.getString("Geburtsdatum"));
-            Kunde kunde = new Kunde(kundenList.getString("TrId"), kundenList.getString("Name"), kundenList.getString("Nachname"),
-                    kundenList.getString("Telefonnummer"), kundenList.getString("Geschlecht"), gd, kundenList.getString("Adress"), fschein);
-            kunden.add(kunde);
+    public static boolean sucheBenutzer(String benutzername, String passwort) {
+        try {
+            PreparedStatement stmt = DBautovermietung.conn.prepareStatement("SELECT * FROM Benutzer WHERE benutzername=? AND passwort=?");
+            stmt.setString(1,benutzername);
+            stmt.setString(2,passwort);
+            ResultSet resultSet = stmt.executeQuery();
+
+            if(resultSet.next()) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-        return kunden;
-    }*/
+        return false;
+    }
 
 
 }
