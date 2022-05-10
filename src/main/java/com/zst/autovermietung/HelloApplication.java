@@ -18,12 +18,6 @@ public class HelloApplication extends Application {
         stage.setScene(loginPage);
         stage.show();
 
-        /*FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();*/
-
         DBautovermietung db = new DBautovermietung();
         db.connect();
     }

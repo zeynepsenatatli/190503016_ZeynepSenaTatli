@@ -6,22 +6,25 @@ import java.util.ArrayList;
 public class Kunde extends Person {
 
     private int alter;
+    //private Date datumVonFuehrerschein;
     private Date datumVonFuehrerschein;
     private boolean vorstrafen;
     private String vorstrafen_note;
     private ArrayList<Mietvertrag> alleMietvertraege;
     public int kunde_anzahl;
 
-    public Kunde(String id, String name, String nachname, String telefonnummer, String geschlecht, Date geburtsdatum, String adresse, Date fuehrerschein) {
+    public Kunde(String id, String name, String nachname, String telefonnummer, String geschlecht, Date geburtsdatum, String adresse, Date fuehrerschein, boolean vorstrafen, String vorstrafen_note) {
         super(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse);
 
         this.datumVonFuehrerschein = fuehrerschein;
+        this.vorstrafen = vorstrafen;
+        this.vorstrafen_note = vorstrafen_note;
 
-        if (checkAlter(berechneAlter(geburtsdatum))) {
+        /*if (checkAlter(berechneAlter(geburtsdatum))) {
             setAlter(berechneAlter(geburtsdatum));
         } else {
             //exception;
-        }
+        }*/
 
         kunde_anzahl++;
     }
@@ -36,10 +39,10 @@ public class Kunde extends Person {
 
     }
 
-    public int berechneAlter(Date geburtsdatum) {
+    /*public int berechneAlter(Date geburtsdatum) {
         //alter = heute-gdatum;
         return 21;
-    }
+    }*/
 
     //soll es private sein?
     public void setAlter(int alter) {

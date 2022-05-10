@@ -1,19 +1,14 @@
 package com.zst.autovermietung;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.sql.*;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class DBautovermietung {
     public  static Connection conn = null;
-    public  Statement stmt;
+    public  static Statement stmt;
 
     public void connect() {
         try {
@@ -23,8 +18,8 @@ public class DBautovermietung {
             conn = DriverManager.getConnection(url);
 
             System.out.println("Connection to SQLite has been established.");
-            /*stmt = conn.createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM Person");
+            stmt = conn.createStatement();
+            /*ResultSet res = stmt.executeQuery("SELECT * FROM Person");
             if(res.next()){
                 System.out.println("username: "+res.getString("Name")+" Pass: "+res.getString("Nachname"));
             }*/
@@ -52,5 +47,35 @@ public class DBautovermietung {
         return false;
     }
 
+    public static ArrayList<Kunde> getKunden() {
+        ArrayList<Kunde> kunden = new ArrayList<>();
+        SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Statement stmt = DBautovermietung.conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Kunde");
+            while(rs.next()) {
+                String tr_id = rs.getString("TrId");
+                String name = rs.getString("Name");
+                String nachname = rs.getString("Nachname");
+                String sgeburtsdatum = rs.getString("Geburtsdatum");
+                Date geburtsdatum = (Date) dformat.parse(sgeburtsdatum);
+                String geschlecht = rs.getString("Geschlecht");
+                String telefonnummer = rs.getString("Telefonnummer");
+                String adresse = rs.getString("Adress");
+                String sfuhrerschein = rs.getString("DatumVonFuhrerschein");
+                Date datumVonFuhrerschein = (Date) dformat.parse(sfuhrerschein);
+                boolean vorstrafen = rs.getBoolean("Vorstrafen");
+                String vorstrafen_note = rs.getString("VorstrafenNote");
+
+                Kunde kunde = new Kunde(tr_id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, datumVonFuhrerschein, vorstrafen, vorstrafen_note);
+                kunden.add(kunde);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return kunden;
+    }
 
 }

@@ -24,12 +24,13 @@
             <Button fx:id="autosButton" layoutX="60.0" layoutY="206.0" mnemonicParsing="false" onAction="#autoVerwaltung" text="Autos" AnchorPane.leftAnchor="62.4" AnchorPane.rightAnchor="62.4" />
             <Button fx:id="kundenButton" layoutX="55.0" layoutY="293.0" mnemonicParsing="false" onAction="#kundeVerwaltung" text="Kunden" AnchorPane.leftAnchor="57.6" AnchorPane.rightAnchor="57.6" />
             <Button fx:id="mietvertragButton" layoutX="42.0" layoutY="252.0" mnemonicParsing="false" onAction="#mietvertragVerwaltung" prefHeight="26.0" prefWidth="87.0" text="Mietverträge" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.5" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="66.0" prefHeight="18.0" prefWidth="112.0" text="USER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="59.0" prefHeight="18.0" prefWidth="112.0" text="USER">
                <cursor>
                   <Cursor fx:constant="NONE" />
                </cursor>
             </Label>
             <Button fx:id="logoutButton" layoutX="56.0" layoutY="403.0" mnemonicParsing="false" onAction="#logOut" text="Log out" AnchorPane.leftAnchor="57.2" AnchorPane.rightAnchor="57.2" />
+            <Button layoutX="34.0" layoutY="85.0" mnemonicParsing="false" text="Profil bearbeiten" />
          </children>
       </AnchorPane>
    </children>
