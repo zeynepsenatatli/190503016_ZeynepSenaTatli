@@ -53,6 +53,7 @@ public class KundeScreenController implements Initializable{
         stage.setTitle("neue Kunde hinzufügen");
         stage.setScene(scene);
         stage.show();
+
     }
 
 

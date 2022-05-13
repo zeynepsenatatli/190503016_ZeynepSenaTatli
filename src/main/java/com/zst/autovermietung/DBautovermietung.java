@@ -78,4 +78,26 @@ public class DBautovermietung {
         return kunden;
     }
 
+    public static void addKunde(String tr_id,String name,String nachname, Date geburtsdatum, String geschlecht, String telefonnummer,  String adresse, Date datumVonFuhrerschein) {
+
+        String sql = "INSERT INTO Kunde (TrId, Name, Nachname, Geburtsdatum, Geschlecht, Telefonnummer, Adress, DatumVonFuhrerschein) VALUES(?,?,?,?,?,?,?,?)";
+        SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, tr_id);
+            ps.setString(2, name);
+            ps.setString(3, nachname);
+            String gdatum = dformat.format(geburtsdatum);
+            ps.setString(4, gdatum);
+            ps.setString(5, geschlecht);
+            ps.setString(6, telefonnummer);
+            ps.setString(7, adresse);
+            String fdatum = dformat.format(datumVonFuhrerschein);
+            ps.setString(8, fdatum);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
