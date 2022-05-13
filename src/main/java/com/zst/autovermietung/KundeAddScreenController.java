@@ -1,12 +1,17 @@
 package com.zst.autovermietung;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -45,7 +50,7 @@ public class KundeAddScreenController implements Initializable {
         geschlechtChoice.getItems().add("weiblich");
     }
 
-    public void addKundeButton() throws ParseException {
+    public void addKundeButton() throws ParseException, IOException {
 
         String id = trIdText.getText();
         String name = nameText.getText();
@@ -57,6 +62,19 @@ public class KundeAddScreenController implements Initializable {
         String adresse = adresseText.getText();
         Date ausstellungsdatum = new SimpleDateFormat("yyyy-MM-dd").parse(austellungsdatumPicker.getValue().toString());
 
-        DBautovermietung.addKunde(id, name, nachname, geburtsdatum, geschlecht, telefonnummer, adresse, ausstellungsdatum);
+        if(DBautovermietung.checkKunde(id)) {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Warnung!");
+            stage.setScene(scene);
+            stage.show();
+
+        }else{
+            DBautovermietung.addKunde(id, name, nachname, geburtsdatum, geschlecht, telefonnummer, adresse, ausstellungsdatum);
+            KundeScreenController.ksc.kundeList();
+        }
     }
 }

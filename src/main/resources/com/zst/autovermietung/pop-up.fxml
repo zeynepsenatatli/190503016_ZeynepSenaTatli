@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="138.0" prefWidth="329.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.PopUpController">
+   <children>
+      <Label layoutX="117.0" layoutY="25.0" text="WARNUNG!!" textFill="#df1515">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="94.0" text="Dieser Kunde ist bereit im System gespeichert!">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="148.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons8-warning-58.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -29,10 +29,17 @@ public class KundeScreenController implements Initializable{
     private Scene scene;
     private Parent root;
 
-
+    public static KundeScreenController ksc;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ksc = this;
+        kundeList();
+    }
+
+    public void kundeList() {
+
+        kundenList.getChildren().clear();
         ArrayList<Kunde> kunden = DBautovermietung.getKunden();
         for(int i = 0; i < kunden.size(); i++) {
             FXMLLoader kundeItem = new FXMLLoader(getClass().getResource("kunde-item.fxml"));
@@ -45,6 +52,7 @@ public class KundeScreenController implements Initializable{
             }
         }
     }
+
     public void openAddScreen(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kunde-add-screen.fxml"));
         root = (Parent) fxmlLoader.load();
@@ -53,7 +61,6 @@ public class KundeScreenController implements Initializable{
         stage.setTitle("neue Kunde hinzufügen");
         stage.setScene(scene);
         stage.show();
-
     }
 
 

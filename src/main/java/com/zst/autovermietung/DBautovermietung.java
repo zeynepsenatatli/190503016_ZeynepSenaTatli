@@ -78,6 +78,21 @@ public class DBautovermietung {
         return kunden;
     }
 
+    public static boolean checkKunde(String id) {
+        try {
+            PreparedStatement stmt = DBautovermietung.conn.prepareStatement("SELECT * FROM Kunde WHERE TrId=?");
+            stmt.setString(1,id);
+            ResultSet resultSet = stmt.executeQuery();
+            if(resultSet.next()) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
     public static void addKunde(String tr_id,String name,String nachname, Date geburtsdatum, String geschlecht, String telefonnummer,  String adresse, Date datumVonFuhrerschein) {
 
         String sql = "INSERT INTO Kunde (TrId, Name, Nachname, Geburtsdatum, Geschlecht, Telefonnummer, Adress, DatumVonFuhrerschein) VALUES(?,?,?,?,?,?,?,?)";
