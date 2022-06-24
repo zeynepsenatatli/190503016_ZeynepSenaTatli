@@ -63,6 +63,4 @@ public class KundeScreenController implements Initializable{
         stage.show();
     }
 
-
-
 }

@@ -1,5 +1,6 @@
 package com.zst.autovermietung;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public abstract class Person{
@@ -16,11 +17,12 @@ public abstract class Person{
 
 
     public Person(String id, String name, String nachname, String telefonnummer, String geschlecht, Date geburtsdatum, String adresse){
-        if(checkId(id)){
+        /*if(checkId(id)){
             this.tr_id = id;
         }else{
-            //
-        }
+
+        }*/
+        this.tr_id = id;
         this.name = name;
         this.nachname = nachname;
         this.telefonnummer = telefonnummer;
@@ -30,7 +32,7 @@ public abstract class Person{
 
     }
 
-    public boolean checkId(String id) {
+    public static boolean checkId(String id) {
         if(id.length() == 11 && id.matches("[0-9]+")){
             return true;
         }else{
@@ -90,6 +92,12 @@ public abstract class Person{
 
     public Date getGeburtsdatum(){
         return geburtsdatum;
+    }
+
+    SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+    public String getGeburtsdatumString() {
+        String gb = dformat.format(geburtsdatum);
+        return gb;
     }
 
     public void setGeschlecht(String g){

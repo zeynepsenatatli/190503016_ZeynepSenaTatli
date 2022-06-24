@@ -20,7 +20,7 @@
       <AnchorPane fx:id="screen" layoutX="168.0" layoutY="128.0" prefHeight="378.0" prefWidth="690.0" style="-fx-background-color: #EAEFF3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="172.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="58.0" />
       <AnchorPane layoutY="46.0" prefHeight="463.0" prefWidth="172.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="58.0">
          <children>
-            <Button fx:id="homepageButton" layoutX="46.0" layoutY="162.0" mnemonicParsing="false" onAction="#firstHomePage" text="Homepage" AnchorPane.leftAnchor="48.4" AnchorPane.rightAnchor="48.4" />
+            <Button fx:id="homepageButton" layoutX="46.0" layoutY="162.0" mnemonicParsing="false" onAction="#firstHomePage" style="-fx-background-color: #00000;" text="Homepage" AnchorPane.leftAnchor="48.4" AnchorPane.rightAnchor="48.4" />
             <Button fx:id="autosButton" layoutX="60.0" layoutY="206.0" mnemonicParsing="false" onAction="#autoVerwaltung" text="Autos" AnchorPane.leftAnchor="62.4" AnchorPane.rightAnchor="62.4" />
             <Button fx:id="kundenButton" layoutX="55.0" layoutY="293.0" mnemonicParsing="false" onAction="#kundeVerwaltung" text="Kunden" AnchorPane.leftAnchor="57.6" AnchorPane.rightAnchor="57.6" />
             <Button fx:id="mietvertragButton" layoutX="42.0" layoutY="252.0" mnemonicParsing="false" onAction="#mietvertragVerwaltung" prefHeight="26.0" prefWidth="87.0" text="Mietverträge" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.5" />
@@ -30,7 +30,7 @@
                </cursor>
             </Label>
             <Button fx:id="logoutButton" layoutX="56.0" layoutY="403.0" mnemonicParsing="false" onAction="#logOut" text="Log out" AnchorPane.leftAnchor="57.2" AnchorPane.rightAnchor="57.2" />
-            <Button layoutX="34.0" layoutY="85.0" mnemonicParsing="false" text="Profil bearbeiten" />
+            <Button layoutX="42.0" layoutY="85.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Ayarlar" />
          </children>
       </AnchorPane>
    </children>

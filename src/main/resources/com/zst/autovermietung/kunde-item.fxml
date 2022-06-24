@@ -2,34 +2,33 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="620.0" style="-fx-background-color: #C8D7E3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.KundeItemController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="638.0" style="-fx-background-color: #C8D7E3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.KundeItemController">
    <children>
-      <HBox prefHeight="60.0" prefWidth="462.0">
+      <HBox prefHeight="42.0" prefWidth="469.0">
          <children>
-            <Label fx:id="fullnameLabel" alignment="CENTER" prefHeight="60.0" prefWidth="205.0" text="NAME + NACHNAME" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Label fx:id="telefonnummerLabel" alignment="CENTER" prefHeight="60.0" prefWidth="130.0" text="Telefonnummer" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="18.0" />
-            <Label fx:id="geschlechtLabel" alignment="CENTER" prefHeight="60.0" prefWidth="85.0" text="Geschlecht" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
+            <AnchorPane prefHeight="40.0" prefWidth="39.0">
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8-customer-60%20-%20Kopya.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+            <Label fx:id="idLabel" alignment="CENTER" prefHeight="42.0" prefWidth="142.0" text="TC-IDNUMMER" textAlignment="CENTER" />
+            <Label fx:id="fullnameLabel" alignment="CENTER" prefHeight="42.0" prefWidth="168.0" text="NAME + NACHNAME" textAlignment="CENTER" />
+            <Label fx:id="telefonnummerLabel" alignment="CENTER" prefHeight="42.0" prefWidth="124.0" text="Telefonnummer" textAlignment="CENTER" />
          </children>
       </HBox>
-      <Button fx:id="mehrButton" layoutX="478.0" layoutY="17.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" text="mehr Informationen" />
+      <Button fx:id="mehrButton" layoutX="481.0" layoutY="8.0" mnemonicParsing="false" onAction="#mehrInformationen" prefHeight="26.0" prefWidth="142.0" text="mehr Informationen">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

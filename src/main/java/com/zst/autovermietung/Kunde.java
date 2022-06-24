@@ -1,5 +1,9 @@
 package com.zst.autovermietung;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -20,6 +24,7 @@ public class Kunde extends Person {
         this.vorstrafen = vorstrafen;
         this.vorstrafen_note = vorstrafen_note;
 
+        this.alter = berechneAlter();
         /*if (checkAlter(berechneAlter(geburtsdatum))) {
             setAlter(berechneAlter(geburtsdatum));
         } else {
@@ -45,13 +50,22 @@ public class Kunde extends Person {
     }*/
 
     //soll es private sein?
-    public void setAlter(int alter) {
-        this.alter = alter;
+    public void setAlter() {
+        this.alter = berechneAlter();
     }
 
     public int getAlter() {
         return alter;
     }
+
+    public int berechneAlter() {
+
+        LocalDate gb = getGeburtsdatum().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        return Period.between(gb, LocalDate.now()).getYears();
+    }
+
 
     public boolean checkFuehrerschein(Date date) {
         return true;
@@ -59,6 +73,12 @@ public class Kunde extends Person {
 
     public void setDatumVonFuehrerschein(Date datum) {
         this.datumVonFuehrerschein = datum;
+    }
+
+    SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+    public String getDatumVonFuehrerscheinString() {
+        String fdatum = dformat.format(datumVonFuehrerschein);
+        return fdatum;
     }
 
     public Date getDatumVonFuehrerschein() {
