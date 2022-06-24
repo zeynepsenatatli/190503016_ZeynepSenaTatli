@@ -3,8 +3,7 @@ package com.zst.autovermietung;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-
-public class PopUpController {
+public class FeedbackController {
 
     @FXML
     private Label messageLabel;

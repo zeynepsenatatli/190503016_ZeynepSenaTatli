@@ -115,4 +115,15 @@ public class DBautovermietung {
             e.printStackTrace();
         }
     }
+
+    public static void removeKunde(Kunde kunde) {
+        String sql = "DELETE FROM Kunde WHERE TrId=" + kunde.getId();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

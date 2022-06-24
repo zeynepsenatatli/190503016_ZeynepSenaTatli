@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.KundeDetailsItemController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.KundeDetailsItemController">
    <children>
       <VBox layoutX="182.0" layoutY="40.0" prefHeight="179.0" prefWidth="148.0">
          <children>
@@ -83,7 +83,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="204.0" layoutY="202.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="27.0">
+      <Button layoutX="204.0" layoutY="202.0" mnemonicParsing="false" onAction="#removeKunde" prefHeight="28.0" prefWidth="27.0">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>

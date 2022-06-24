@@ -18,7 +18,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="148.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image" fitHeight="34.0" fitWidth="36.0" layoutX="148.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons8-warning-58.png" />
          </image>

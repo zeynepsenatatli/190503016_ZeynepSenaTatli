@@ -2,13 +2,23 @@ package com.zst.autovermietung;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class KundeDetailsItemController {
+
+    @FXML
+    private AnchorPane pane;
 
     @FXML
     private Label adresseLabel;
@@ -37,10 +47,13 @@ public class KundeDetailsItemController {
     @FXML
     private Label vorstrafenLabel;
 
-
     private Kunde kunde;
 
+
     public void setKunde(Kunde kunde) {
+
+        this.kunde = kunde;
+
         kundeNameLabel.setText(kunde.getName() + " " + kunde.getNachname());
         idLabel.setText(kunde.getId());
         geschlechtLabel.setText(kunde.getGeschlecht());
@@ -56,6 +69,34 @@ public class KundeDetailsItemController {
             vorstrafenLabel.setText(kunde.getVorstrafeNote());
         }
     }
+
+
+
+    public void removeKunde() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up-ja-nein.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        PopUpJaNeinController jaNeinController = fxmlLoader.getController();
+        jaNeinController.setMessageLabel("Möchten Sie diesen Kunden wirklich löschen?");
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setTitle("Warnung!");
+        stage.setScene(scene);
+        stage.show();
+
+        if(jaNeinController.jaButton()) {
+            System.out.println("girildi");
+            DBautovermietung.removeKunde(kunde);
+            KundeScreenController.ksc.kundeList();
+
+            stage.close();
+
+            Stage s = (Stage) pane.getScene().getWindow();
+            s.close();
+        }
+    }
+
+
 
     /*@Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
