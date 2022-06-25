@@ -2,13 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.KundeDetailsItemController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.KundeEditController">
    <children>
       <VBox layoutX="182.0" layoutY="40.0" prefHeight="179.0" prefWidth="148.0">
          <children>
@@ -17,16 +19,16 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="telefonnummerLabel" prefHeight="22.0" prefWidth="194.0" text="telefon" />
+            <TextField fx:id="telefonField" prefHeight="0.0" prefWidth="148.0" />
             <Label contentDisplay="CENTER" prefHeight="31.0" prefWidth="138.0" text="Adresse:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="adresseLabel" alignment="TOP_LEFT" lineSpacing="4.0" prefHeight="68.0" prefWidth="148.0" snapToPixel="false" text="adressadressadressadressadressadressadressadressadress" wrapText="true" />
+            <TextArea fx:id="adresseField" prefHeight="70.0" prefWidth="148.0" />
          </children>
       </VBox>
-      <VBox layoutX="342.0" layoutY="46.0" prefHeight="110.0" prefWidth="160.0">
+      <VBox layoutX="342.0" layoutY="46.0" prefHeight="110.0" prefWidth="155.0">
          <children>
             <Label contentDisplay="CENTER" prefHeight="2.0" prefWidth="160.0" text="Datum von Fuhrerschein:">
                <font>
@@ -39,15 +41,10 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="vorstrafenLabel" prefHeight="26.0" prefWidth="214.0" text="vortrafen_note" wrapText="true" />
+            <TextField fx:id="vorstrafenField" prefHeight="26.0" prefWidth="130.0" />
          </children>
       </VBox>
-      <Label fx:id="kundeNameLabel" alignment="CENTER" layoutX="3.0" layoutY="2.0" prefHeight="43.0" prefWidth="510.0" text="Kunde Name ">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <VBox layoutX="22.0" layoutY="40.0" prefHeight="238.0" prefWidth="160.0">
+      <VBox layoutX="22.0" layoutY="40.0" prefHeight="238.0" prefWidth="148.0">
          <children>
             <Label contentDisplay="CENTER" prefHeight="21.0" prefWidth="114.0" text="TR-ID-Nummer:">
                <font>
@@ -60,7 +57,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="geburtsdatum" prefHeight="27.0" prefWidth="214.0" text="geburtsdatum" />
+            <Label fx:id="gbLabel" prefHeight="18.0" prefWidth="148.0" text="Label" />
             <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="214.0" text="Alter:">
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -72,25 +69,27 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="geschlechtLabel" prefHeight="27.0" prefWidth="140.0" text="geschlecht" />
+            <TextField fx:id="geschlechtField" />
          </children>
       </VBox>
-      <Button layoutX="262.0" layoutY="202.0" mnemonicParsing="false" onAction="#editKunde" prefHeight="19.0" prefWidth="36.0">
+      <Button fx:id="editInfo" layoutX="237.0" layoutY="205.0" mnemonicParsing="false" onAction="#saveInfos" prefHeight="19.0" prefWidth="36.0">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/icons8-edit-48 - Kopya.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <Button layoutX="204.0" layoutY="202.0" mnemonicParsing="false" onAction="#removeKunde" prefHeight="28.0" prefWidth="27.0">
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/icons8-delete-48 - Kopya.png" />
+                  <Image url="@images/save.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
+      <TextField fx:id="kundeNameField" layoutX="125.0" layoutY="2.0" prefHeight="22.0" prefWidth="114.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="kundeNNameField" layoutX="263.0" layoutY="2.0" prefHeight="6.0" prefWidth="114.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

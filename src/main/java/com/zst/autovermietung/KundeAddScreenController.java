@@ -122,7 +122,8 @@ public class KundeAddScreenController implements Initializable {
             stage.show();
 
         }else {
-            DBautovermietung.addKunde(id, name, nachname, geburtsdatum, geschlecht, telefonnummer, adresse, ausstellungsdatum);
+
+            DBautovermietung.addKunde(new Kunde(id, name, nachname, telefonnummer, geschlecht, geburtsdatum , adresse, ausstellungsdatum));
             KundeScreenController.ksc.kundeList();
         }
     }

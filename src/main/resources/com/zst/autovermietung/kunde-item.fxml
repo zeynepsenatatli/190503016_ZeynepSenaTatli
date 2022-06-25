@@ -16,7 +16,7 @@
                <children>
                   <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons8-customer-60%20-%20Kopya.png" />
+                        <Image url="@images/icons8-customer-60 - Kopya.png" />
                      </image>
                   </ImageView>
                </children></AnchorPane>

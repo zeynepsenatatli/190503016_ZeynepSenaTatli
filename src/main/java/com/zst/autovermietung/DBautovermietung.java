@@ -93,28 +93,30 @@ public class DBautovermietung {
         }
         return false;
     }
-    public static void addKunde(String tr_id,String name,String nachname, Date geburtsdatum, String geschlecht, String telefonnummer,  String adresse, Date datumVonFuhrerschein) {
+    public static void addKunde(Kunde k) {
 
-        String sql = "INSERT INTO Kunde (TrId, Name, Nachname, Geburtsdatum, Geschlecht, Telefonnummer, Adress, DatumVonFuhrerschein) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Kunde (TrId, Name, Nachname, Geburtsdatum, K_Alter, Geschlecht, Telefonnummer, Adress, DatumVonFuhrerschein) VALUES(?,?,?,?,?,?,?,?,?)";
         SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, tr_id);
-            ps.setString(2, name);
-            ps.setString(3, nachname);
-            String gdatum = dformat.format(geburtsdatum);
+            ps.setString(1, k.getId());
+            ps.setString(2, k.getName());
+            ps.setString(3, k.getNachname());
+            String gdatum = dformat.format(k.getGeburtsdatum());
             ps.setString(4, gdatum);
-            ps.setString(5, geschlecht);
-            ps.setString(6, telefonnummer);
-            ps.setString(7, adresse);
-            String fdatum = dformat.format(datumVonFuhrerschein);
-            ps.setString(8, fdatum);
+            ps.setString(5, Integer.toString(k.getAlter()));
+            ps.setString(6, k.getGeschlecht());
+            ps.setString(7, k.getTelefonnummer());
+            ps.setString(8, k.getAdresse());
+            String fdatum = dformat.format(k.getDatumVonFuehrerschein());
+            ps.setString(9, fdatum);
 
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     public static void removeKunde(Kunde kunde) {
         String sql = "DELETE FROM Kunde WHERE TrId=" + kunde.getId();
@@ -124,6 +126,27 @@ public class DBautovermietung {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    public static void updateKunde(Kunde kunde) {
+
+        String adress = "UPDATE Kunde SET Adress = '" +kunde.getAdresse() + "' WHERE TrId =  " + kunde.getId();
+        String telefonnummer = "UPDATE Kunde SET Telefonnummer ='"+ kunde.getTelefonnummer() + "' WHERE TrId=" + kunde.getId();
+        String vorstrafen = "UPDATE Kunde SET VorstrafenNote = '"+ kunde.getVorstrafeNote() + "' WHERE TrId=" + kunde.getId();
+        String name = "UPDATE Kunde SET Name= '" + kunde.getName() + "' WHERE TrId=" + kunde.getId();
+        String nachname = "UPDATE Kunde SET Nachname= '" + kunde.getNachname()+ "' WHERE TrId=" + kunde.getId();
+
+
+        try {
+            Statement statement = conn.createStatement();
+            statement.execute(adress);
+            statement.execute(telefonnummer);
+            statement.execute(vorstrafen);
+            statement.execute(name);
+            statement.execute(nachname);
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

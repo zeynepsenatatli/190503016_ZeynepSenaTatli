@@ -25,11 +25,15 @@ public class Kunde extends Person {
         this.vorstrafen_note = vorstrafen_note;
 
         this.alter = berechneAlter();
-        /*if (checkAlter(berechneAlter(geburtsdatum))) {
-            setAlter(berechneAlter(geburtsdatum));
-        } else {
-            //exception;
-        }*/
+
+        kunde_anzahl++;
+    }
+
+    public Kunde(String id, String name, String nachname, String telefonnummer, String geschlecht, Date geburtsdatum, String adresse, Date fuehrerschein) {
+        super(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse);
+
+        this.datumVonFuehrerschein = fuehrerschein;
+        this.alter = berechneAlter();
 
         kunde_anzahl++;
     }

@@ -40,6 +40,14 @@ public abstract class Person{
         }
     }
 
+    public static boolean checkTelefon(String telefonnummer) {
+        if(telefonnummer.substring(0,2).equals("05") && telefonnummer.matches("[0-9]+") && telefonnummer.length() == 11) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public void setName(String name){
         this.name = name;
     }

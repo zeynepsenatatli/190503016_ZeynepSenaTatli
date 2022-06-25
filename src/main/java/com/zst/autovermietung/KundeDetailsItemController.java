@@ -1,6 +1,7 @@
 package com.zst.autovermietung;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -49,7 +50,6 @@ public class KundeDetailsItemController {
 
     private Kunde kunde;
 
-
     public void setKunde(Kunde kunde) {
 
         this.kunde = kunde;
@@ -94,6 +94,26 @@ public class KundeDetailsItemController {
             Stage s = (Stage) pane.getScene().getWindow();
             s.close();
         }
+    }
+
+    Parent root;
+    Stage stage;
+    Scene scene;
+
+    public void editKunde(ActionEvent event) throws IOException {
+
+        FXMLLoader kundeEdit = new FXMLLoader(getClass().getResource("kunde-edit.fxml"));
+        root = kundeEdit.load();
+
+        KundeEditController editController = kundeEdit.getController();
+        editController.editInfo(kunde);
+        stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+
     }
 
 
