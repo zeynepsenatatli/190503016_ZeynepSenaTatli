@@ -113,7 +113,6 @@ public class KundeDetailsItemController {
         stage.setScene(scene);
         stage.show();
 
-
     }
 
 

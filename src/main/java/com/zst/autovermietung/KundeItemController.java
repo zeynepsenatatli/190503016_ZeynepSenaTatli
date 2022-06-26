@@ -52,10 +52,5 @@ public class KundeItemController {
         stage.setTitle("Kunde-Informationen");
         stage.setScene(scene);
         stage.show();
-
     }
-
-
-
-
 }

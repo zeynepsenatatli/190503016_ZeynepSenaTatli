@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="312.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.AutoEditController">
+   <children>
+      <ImageView fitHeight="134.0" fitWidth="232.0" layoutX="89.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/caricon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="markemodellLabel" alignment="CENTER" layoutX="-3.0" layoutY="181.0" prefHeight="19.0" prefWidth="312.0" text="Marke Modell  ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="jahrLabel" alignment="CENTER" layoutX="-3.0" layoutY="200.0" prefHeight="19.0" prefWidth="312.0" text="Jahr">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="-3.0" layoutY="234.0" prefHeight="19.0" prefWidth="154.0" text="Mietepreis:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="-3.0" layoutY="257.0" prefHeight="19.0" prefWidth="154.0" text="Farbe:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="-3.0" layoutY="281.0" prefHeight="19.0" prefWidth="154.0" text="Kilometerstand:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="-2.0" layoutY="304.0" prefHeight="19.0" prefWidth="154.0" text="Getriebetyp:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="-3.0" layoutY="332.0" prefHeight="19.0" prefWidth="154.0" text="Verfügbarkeit:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="139.0" layoutY="361.0" mnemonicParsing="false" onAction="#saveInfos">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/save.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="mieteField" layoutX="161.0" layoutY="233.0" prefHeight="22.0" prefWidth="115.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="farbeField" layoutX="161.0" layoutY="256.0" prefHeight="22.0" prefWidth="115.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="kmField" layoutX="161.0" layoutY="279.0" prefHeight="22.0" prefWidth="115.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <ChoiceBox fx:id="verfugbarChoice" layoutX="161.0" layoutY="329.0" prefHeight="0.0" prefWidth="115.0" />
+      <Label fx:id="nummernschildLabel" alignment="CENTER" layoutY="148.0" prefHeight="22.0" prefWidth="312.0" text="Nummernschild">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="typChoice" layoutX="161.0" layoutY="301.0" prefHeight="0.0" prefWidth="115.0" />
+   </children>
+</AnchorPane>

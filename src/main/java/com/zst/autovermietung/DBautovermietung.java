@@ -149,4 +149,102 @@ public class DBautovermietung {
             e.printStackTrace();
         }
     }
+
+    public static ArrayList<Auto> getAuto() {
+        ArrayList<Auto> autos = new ArrayList<>();
+        try {
+            Statement stmt = DBautovermietung.conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Autos");
+            while(rs.next()) {
+                String nummernschild= rs.getString("Nummernschild");
+                String marke = rs.getString("Marke");
+                String modell = rs.getString("Modell");
+                int kilometerstand = rs.getInt("Kilometerstand");
+                String getriebetyp = rs.getString("Getriebetyp");
+                String farbe = rs.getString("Farbe");
+                float mietpreise = rs.getFloat("Mietpreise");
+                String baujahr = rs.getString("Baujahr");
+                boolean istVerfuegbar = false;
+                if(rs.getInt("istVerfuegbar") == 1) {
+                    istVerfuegbar = true;
+                }else if(rs.getInt("istVerfuegbar") == 0) {
+                    istVerfuegbar = false;
+                }
+                Auto auto = new Auto(nummernschild, kilometerstand, marke, modell, farbe, baujahr, istVerfuegbar, mietpreise, getriebetyp);
+                autos.add(auto);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return autos;
+    }
+
+    public static void addAuto(Auto a) {
+
+        String sql = "INSERT INTO Autos (Nummernschild, Marke, Modell, Kilometerstand, Getriebetyp, Farbe, Mietpreise, Baujahr, istVerfuegbar) VALUES(?,?,?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, a.getNummernschild());
+            ps.setString(2, a.getMarke());
+            ps.setString(3, a.getModell());
+            ps.setInt(4, a.getKilometerstand());
+            ps.setString(5, a.getGetriebetyp());
+            ps.setString(6, a.getFarbe());
+            ps.setFloat(7, a.getMietpreise());
+            ps.setString(8, a.getBaujahr());
+
+            int b = 0;
+            if(a.checkVerfuegbarkeit() == true) {
+                b = 1;
+            }else {
+                b = 0;
+            }
+            ps.setInt(9, b);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void removeAuto(Auto auto) {
+        String sql = "DELETE FROM Autos WHERE Nummernschild='" + auto.getNummernschild()+"'";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateAuto(Auto auto) {
+
+        String farbe = "UPDATE Autos SET Farbe = '" + auto.getFarbe() + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        String km = "UPDATE Autos SET Kilometerstand =  '"+auto.getKilometerstand()+"'  WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        String typ = "UPDATE Autos SET Getriebetyp = '" + auto.getGetriebetyp() + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        String preis = "UPDATE Autos SET Mietpreise =  '" +  auto.getMietpreise() + "'  WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+
+        String verfugbar;
+        if(auto.checkVerfuegbarkeit()== true){
+            verfugbar = "UPDATE Autos SET istVerfuegbar = '" + 1 + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        }else{
+            verfugbar = "UPDATE Autos SET istVerfuegbar =  '" + 0 + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        }
+
+
+        try {
+            Statement stm = conn.createStatement();
+            stm.execute(farbe);
+            stm.execute(km);
+            stm.execute(typ);
+            stm.execute(preis);
+            stm.execute(verfugbar);
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

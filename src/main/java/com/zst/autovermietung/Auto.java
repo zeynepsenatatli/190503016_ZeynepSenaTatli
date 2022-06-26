@@ -9,9 +9,11 @@ public class Auto{
     private String baujahr;
     private float miet_preise;
     private boolean istVerfuegbar;
+    private String getriebetyp;
+
     public int auto_anzahl;
 
-    public Auto(String nummernschild, int km, String marke, String modell, String farbe, String baujahr){
+    public Auto(String nummernschild, int km, String marke, String modell, String farbe, String baujahr, String getriebetyp){
 
         if(checkNummernschild(nummernschild)){
             this.nummernschild = nummernschild;
@@ -23,11 +25,12 @@ public class Auto{
         this.modell = modell;
         this.farbe = farbe;
         this.baujahr = baujahr;
+        this.getriebetyp = getriebetyp;
 
         auto_anzahl++;
     }
 
-    public Auto(String nummernschild, int km, String marke, String modell, String farbe, String baujahr, boolean verfuegbar){
+    public Auto(String nummernschild, int km, String marke, String modell, String farbe, String baujahr, boolean verfuegbar, String getriebetyp){
 
         if(checkNummernschild(nummernschild)){
             this.nummernschild = nummernschild;
@@ -40,6 +43,25 @@ public class Auto{
         this.farbe = farbe;
         this.baujahr = baujahr;
         this.istVerfuegbar = verfuegbar;
+        this.getriebetyp = getriebetyp;
+
+        auto_anzahl++;
+    }
+    public Auto(String nummernschild, int km, String marke, String modell, String farbe, String baujahr, boolean verfuegbar, float mietpreise, String getriebetyp){
+
+        if(checkNummernschild(nummernschild)){
+            this.nummernschild = nummernschild;
+        }else{
+            //
+        }
+        this.kilometerstand = km;
+        this.marke = marke;
+        this.modell = modell;
+        this.farbe = farbe;
+        this.baujahr = baujahr;
+        this.istVerfuegbar = verfuegbar;
+        this.miet_preise = mietpreise;
+        this.getriebetyp = getriebetyp;
 
         auto_anzahl++;
     }
@@ -87,6 +109,12 @@ public class Auto{
     public String getBaujahr(){
         return baujahr;
     }
+
+    public void setGetriebetyp(String typ) {
+        this.getriebetyp = typ;
+    }
+
+    public String getGetriebetyp() { return getriebetyp; }
 
     public void setKilometerstand(int km){
         this.kilometerstand = km;

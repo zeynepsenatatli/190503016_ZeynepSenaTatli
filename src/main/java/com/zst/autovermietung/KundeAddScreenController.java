@@ -108,7 +108,20 @@ public class KundeAddScreenController implements Initializable {
             stage.setScene(scene);
             stage.show();
 
-        } else if(id.isEmpty() || name.isEmpty() || nachname.isEmpty() || gdexception || choice
+        }else if(Kunde.checkTelefon(telefonnummer) == false){
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            PopUpController popUpController = fxmlLoader.getController();
+            popUpController.setMessage("Das Format von eingegebene Telefonnummer ist falsch.");
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Warnung!");
+            stage.setScene(scene);
+            stage.show();
+
+
+        }else if(id.isEmpty() || name.isEmpty() || nachname.isEmpty() || gdexception || choice
                 || telefonnummer.isEmpty() || adresse.isEmpty() || ausdatumexception) {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));

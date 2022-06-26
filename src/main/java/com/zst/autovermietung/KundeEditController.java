@@ -52,7 +52,6 @@ public class KundeEditController {
     @FXML
     private TextField vorstrafenField;
 
-
     private Kunde kunde;
 
     public void editInfo(Kunde k) {
