@@ -1,7 +1,9 @@
 package com.zst.autovermietung;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -97,8 +99,26 @@ public class MietvertragDetailsItemController {
         }
     }
 
-    public void editVertrag() {
+    Parent root;
+    Stage stage;
+    Scene scene;
 
+    public void editVertrag(ActionEvent event) {
+
+        FXMLLoader mietvertragEdit = new FXMLLoader(getClass().getResource("mietvertrag-edit.fxml"));
+        try {
+            root = mietvertragEdit.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        MietvertragEditController editController = mietvertragEdit.getController();
+        editController.editInfo(m);
+        stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

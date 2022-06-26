@@ -437,31 +437,23 @@ public class DBautovermietung {
         }
     }
 
-    public static void updateAuto(Mietvertrag mvertrag) {
+    public static void updateMietvertrag(Mietvertrag mvertrag) {
 
-        /*String farbe = "UPDATE Autos SET Farbe = '" + auto.getFarbe() + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
-        String km = "UPDATE Autos SET Kilometerstand =  '"+auto.getKilometerstand()+"'  WHERE Nummernschild = '" + auto.getNummernschild()+"'";
-        String typ = "UPDATE Autos SET Getriebetyp = '" + auto.getGetriebetyp() + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
-        String preis = "UPDATE Autos SET Mietpreise =  '" +  auto.getMietpreise() + "'  WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        String problem = "UPDATE Mietvertrag SET Problembezeichnung =  '" +  mvertrag.getProblembezeichnung() + "'  WHERE Vertrag_Id = '" + mvertrag.getVertraId()+"'";
 
-        String verfugbar;
-        if(auto.checkVerfuegbarkeit()== true){
-            verfugbar = "UPDATE Autos SET istVerfuegbar = '" + 1 + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        String bezahlt;
+        if(mvertrag.getBezahlStatus()== true){
+            bezahlt = "UPDATE Mietvertrag SET istBezahlt = '" + 1 + "' WHERE Vertrag_Id = '" + mvertrag.getVertraId() +"'";
         }else{
-            verfugbar = "UPDATE Autos SET istVerfuegbar =  '" + 0 + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+            bezahlt = "UPDATE Mietvertrag SET istBezahlt =  '" + 0 + "' WHERE Vertrag_Id = '" + mvertrag.getVertraId()+"'";
         }
-
         try {
             Statement stm = conn.createStatement();
-            stm.execute(farbe);
-            stm.execute(km);
-            stm.execute(typ);
-            stm.execute(preis);
-            stm.execute(verfugbar);
-
+            stm.execute(problem);
+            stm.execute(bezahlt);
 
         }catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 }
