@@ -22,6 +22,17 @@ public class Mietvertrag{
         this.kunde = kunde;
         this.verantwortlicheMitarbeiter = mitarbeiter;
     }
+    public Mietvertrag(String id, Date startdatum, Date enddatum, Auto auto, Kunde kunde, Mitarbeiter mitarbeiter, float miete, boolean istBezahlt, String problembezeichnung){
+        this.vertrag_id = id;
+        this.startdatum = startdatum;
+        this.enddatum = enddatum;
+        this.auto = auto;
+        this.kunde = kunde;
+        this.verantwortlicheMitarbeiter = mitarbeiter;
+        this.miete = miete;
+        this.istBezahlt = istBezahlt;
+        this.problembezeichnung = problembezeichnung;
+    }
 
     //private de olabilir
     public void berechneMiete(float taglicheMiete, Date start, Date end) {
@@ -73,7 +84,7 @@ public class Mietvertrag{
     }
 
     public Auto getAuto(){
-        return null;
+        return this.auto;
     }
 
     public void setKunde(Kunde kunde){
@@ -81,7 +92,7 @@ public class Mietvertrag{
     }
 
     public Kunde getKunde(){
-        return null;
+        return this.kunde;
     }
 
     public void setVerantwortlicheMitarbeiter(Mitarbeiter mitarbeiter){
@@ -89,7 +100,7 @@ public class Mietvertrag{
     }
 
     public Mitarbeiter getVerantwortlicheMitarbeiter(){
-        return null;
+        return this.verantwortlicheMitarbeiter;
     }
 
     public void setProblembezeichnung(String problem){

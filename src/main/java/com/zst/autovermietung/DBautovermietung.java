@@ -64,7 +64,13 @@ public class DBautovermietung {
                 String adresse = rs.getString("Adress");
                 String sfuhrerschein = rs.getString("DatumVonFuhrerschein");
                 Date datumVonFuhrerschein = (Date) dformat.parse(sfuhrerschein);
-                boolean vorstrafen = rs.getBoolean("Vorstrafen");
+                int v = rs.getInt("Vorstrafen");
+                boolean vorstrafen =false;
+                if(v == 1) {
+                    vorstrafen = true;
+                }else {
+                    vorstrafen = false;
+                }
                 String vorstrafen_note = rs.getString("VorstrafenNote");
 
                 Kunde kunde = new Kunde(tr_id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, datumVonFuhrerschein, vorstrafen, vorstrafen_note);
@@ -232,7 +238,6 @@ public class DBautovermietung {
             verfugbar = "UPDATE Autos SET istVerfuegbar =  '" + 0 + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
         }
 
-
         try {
             Statement stm = conn.createStatement();
             stm.execute(farbe);
@@ -245,6 +250,136 @@ public class DBautovermietung {
         }catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    public static Auto getEineAuto(String ns) {
+        Auto auto = null;
+        try{
+            Statement stmt = DBautovermietung.conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Autos WHERE Nummernschild = '" + ns +"'");
+            while(rs.next()) {
+                String marke = rs.getString("Marke");
+                String modell = rs.getString("Modell");
+                int kilometerstand = rs.getInt("Kilometerstand");
+                String getriebetyp = rs.getString("Getriebetyp");
+                String farbe = rs.getString("Farbe");
+                float mietpreise = rs.getFloat("Mietpreise");
+                String baujahr = rs.getString("Baujahr");
+                boolean istVerfuegbar = false;
+                if(rs.getInt("istVerfuegbar") == 1) {
+                    istVerfuegbar = true;
+                }else if(rs.getInt("istVerfuegbar") == 0) {
+                    istVerfuegbar = false;
+                }
+                auto = new Auto(ns, kilometerstand, marke, modell, farbe, baujahr, istVerfuegbar, mietpreise, getriebetyp);
+            }
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return auto;
+    }
+
+    public static Kunde getEineKunde(String id) {
+
+        SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            Statement stmt = DBautovermietung.conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Kunde WHERE TrId = '" + id +"'");
+
+            while(rs.next()) {
+
+                String name = rs.getString("Name");
+                String nachname = rs.getString("Nachname");
+                String sgeburtsdatum = rs.getString("Geburtsdatum");
+                Date geburtsdatum = (Date) dformat.parse(sgeburtsdatum);
+                String geschlecht = rs.getString("Geschlecht");
+                String telefonnummer = rs.getString("Telefonnummer");
+                String adresse = rs.getString("Adress");
+                String sfuhrerschein = rs.getString("DatumVonFuhrerschein");
+                Date datumVonFuhrerschein = (Date) dformat.parse(sfuhrerschein);
+                int v = rs.getInt("Vorstrafen");
+                boolean vorstrafen =false;
+                if(v == 1) {
+                    vorstrafen = true;
+                }else {
+                    vorstrafen = false;
+                }
+                String vorstrafen_note = rs.getString("VorstrafenNote");
+
+                Kunde kunde = new Kunde(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, datumVonFuhrerschein, vorstrafen, vorstrafen_note);
+
+                return kunde;
+            }
+
+        }catch(SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Mitarbeiter getEineMitarbeiter(String id) {
+        Mitarbeiter mitarbeiter = null;
+        SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            Statement stmt = DBautovermietung.conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Mitarbeiter, Benutzer WHERE Mitarbeiter.TrId = Benutzer.trId");
+
+            while (rs.next()) {
+                String name = rs.getString("Name");
+                String nachname = rs.getString("Nachname");
+                String sgeburtsdatum = rs.getString("Geburtsdatum");
+                Date geburtsdatum = (Date) dformat.parse(sgeburtsdatum);
+                String geschlecht = rs.getString("Geschlecht");
+                String telefonnummer = rs.getString("Telefonnummer");
+                String adresse = rs.getString("Adress");
+                String bname = rs.getString("benutzername");
+                String pass = rs.getString("passwort");
+                //String rolle = rs.getString("rolle");
+
+                mitarbeiter = new Mitarbeiter(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, bname, pass);
+            }
+
+        }catch(SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        return mitarbeiter;
+    }
+
+    public static ArrayList<Mietvertrag> getMietvertrag() {
+        ArrayList<Mietvertrag> mvertrage = new ArrayList<>();
+        SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Statement stmt = DBautovermietung.conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Mietvertrag");
+            while(rs.next()) {
+                String vId= rs.getString("Vertrag_Id");
+                String s = rs.getString("Startdatum");
+                Date sdatum = (Date) dformat.parse(s);
+                String e = rs.getString("Enddatum");
+                Date edatum = (Date) dformat.parse(e);
+                float miete = rs.getFloat("Miete");
+                String problem = rs.getString("Problembezeichnung");
+                String nschild = rs.getString("AutoNummernschild");
+                String kundeId = rs.getString("KundeTrId");
+                String verantwortlich = rs.getString("VerantwortlicheMitarbeiter");
+
+                boolean bezahlt = false;
+                if(rs.getInt("istBezahlt") == 1) {
+                    bezahlt = true;
+                }else if(rs.getInt("istBezahlt") == 0) {
+                    bezahlt = false;
+                }
+
+                Mietvertrag mv = new Mietvertrag(vId, sdatum, edatum, getEineAuto(nschild), getEineKunde(kundeId), getEineMitarbeiter(verantwortlich), miete, bezahlt, problem);
+                mvertrage.add(mv);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return mvertrage;
     }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="50.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.MietvertragItemController">
+   <children>
+      <HBox prefHeight="54.0" prefWidth="638.0">
+         <children>
+            <Label fx:id="vertragidLabel" alignment="CENTER" prefHeight="69.0" prefWidth="98.0" text="vertrag id" />
+            <Label fx:id="kundeLabel" alignment="CENTER" prefHeight="62.0" prefWidth="106.0" text="kunde" />
+            <Label fx:id="nschildLabel" alignment="CENTER" prefHeight="62.0" prefWidth="106.0" text="nschild" />
+            <Label fx:id="startdatumLabel" alignment="CENTER" prefHeight="62.0" prefWidth="106.0" text="startdatum" />
+            <Label fx:id="enddatumLabel" alignment="CENTER" prefHeight="62.0" prefWidth="106.0" text="enddatum" />
+            <AnchorPane prefHeight="5.0" prefWidth="186.0">
+               <children>
+                  <Button layoutX="61.0" layoutY="15.0" mnemonicParsing="false" onAction="#mehrInfos" text="Button" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

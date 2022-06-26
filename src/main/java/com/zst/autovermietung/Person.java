@@ -118,7 +118,7 @@ public abstract class Person{
 
     public abstract String toString();
 
-    @Override
+    /*@Override
     public boolean equals(Object o) {
         Person p = (Person) o;
         if(this.tr_id.equals(p.getId())){
@@ -126,5 +126,6 @@ public abstract class Person{
         }else {
             return false;
         }
-    }
+    }*/
+
 }
