@@ -16,6 +16,14 @@ public class Benutzer extends Person{
         this.passwort = passwort;
     }
 
+    public Benutzer(String id, String rolle, String benutzername, String passwort) {
+        super(id);
+
+        this.benutzername = benutzername;
+        this.passwort = passwort;
+        this.rolle = rolle;
+    }
+
 
     public boolean checkRolle(String rolle){
         return true;

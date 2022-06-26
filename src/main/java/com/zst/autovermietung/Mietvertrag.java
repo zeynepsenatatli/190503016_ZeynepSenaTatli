@@ -1,5 +1,10 @@
 package com.zst.autovermietung;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Mietvertrag{
@@ -13,6 +18,7 @@ public class Mietvertrag{
     private Auto auto;
     private Kunde kunde;
     private Mitarbeiter verantwortlicheMitarbeiter;
+    public static int mietvertragAnzahl = 0;
 
     public Mietvertrag(String id, Date startdatum, Date enddatum, Auto auto, Kunde kunde, Mitarbeiter mitarbeiter){
         this.vertrag_id = id;
@@ -21,6 +27,8 @@ public class Mietvertrag{
         this.auto = auto;
         this.kunde = kunde;
         this.verantwortlicheMitarbeiter = mitarbeiter;
+        mietvertragAnzahl++;
+
     }
     public Mietvertrag(String id, Date startdatum, Date enddatum, Auto auto, Kunde kunde, Mitarbeiter mitarbeiter, float miete, boolean istBezahlt, String problembezeichnung){
         this.vertrag_id = id;
@@ -32,6 +40,7 @@ public class Mietvertrag{
         this.miete = miete;
         this.istBezahlt = istBezahlt;
         this.problembezeichnung = problembezeichnung;
+        mietvertragAnzahl++;
     }
 
     //private de olabilir
@@ -55,12 +64,23 @@ public class Mietvertrag{
         return startdatum;
     }
 
+    SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+    public String getStartdatumString() {
+        String fdatum = dformat.format(startdatum);
+        return fdatum;
+    }
+
     public void setEnddatum(Date end){
         this.enddatum = end;
     }
 
     public Date getEnddatum(){
         return enddatum;
+    }
+
+    public String getEnddatumString() {
+        String fdatum = dformat.format(enddatum);
+        return fdatum;
     }
 
     public void setMiete(float miete){
@@ -111,5 +131,19 @@ public class Mietvertrag{
         return problembezeichnung;
     }
     //toString ?
+
+    public static float berechneMiete(Date s, Date e, float miete) {
+
+        LocalDate slocal = s.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        LocalDate elocal = e.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+
+        long noOfDaysBetween = ChronoUnit.DAYS.between(slocal, elocal);
+
+        return noOfDaysBetween*miete;
+    }
 
 }

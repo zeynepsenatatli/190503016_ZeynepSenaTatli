@@ -29,6 +29,7 @@ public class DBautovermietung {
         }
     }
 
+    private static Benutzer b;
     public static boolean sucheBenutzer(String benutzername, String passwort) {
         try {
             PreparedStatement stmt = DBautovermietung.conn.prepareStatement("SELECT * FROM Benutzer WHERE benutzername=? AND passwort=?");
@@ -37,6 +38,9 @@ public class DBautovermietung {
             ResultSet resultSet = stmt.executeQuery();
 
             if(resultSet.next()) {
+                String id = resultSet.getString("trID");
+                String rolle = resultSet.getString("rolle");
+                b = new Benutzer(id, rolle, benutzername, passwort);
                 return true;
             }else {
                 return false;
@@ -45,6 +49,10 @@ public class DBautovermietung {
             System.out.println(e.getMessage());
         }
         return false;
+    }
+
+    public static Benutzer getThisBenutzer() {
+        return b;
     }
 
     public static ArrayList<Kunde> getKunden() {
@@ -103,6 +111,7 @@ public class DBautovermietung {
 
         String sql = "INSERT INTO Kunde (TrId, Name, Nachname, Geburtsdatum, K_Alter, Geschlecht, Telefonnummer, Adress, DatumVonFuhrerschein) VALUES(?,?,?,?,?,?,?,?,?)";
         SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, k.getId());
@@ -381,5 +390,78 @@ public class DBautovermietung {
             e.printStackTrace();
         }
         return mvertrage;
+    }
+
+    public static void addMietvertrag( Date s, Date e, String auto, String kunde, float miete, String mitarbeiter) {
+
+        String sql = "INSERT INTO Mietvertrag (Vertrag_Id, Startdatum, Enddatum, Miete, Autonummernschild, istBezahlt, Problembezeichnung, KundeTrId, VerantwortlicheMitarbeiter) VALUES(?,?,?,?,?,?,?,?,?)";
+        Mietvertrag m = new Mietvertrag(Integer.toString(Mietvertrag.mietvertragAnzahl), s, e, getEineAuto(auto), getEineKunde(kunde), getEineMitarbeiter(mitarbeiter), miete, false, "-");
+        SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, Integer.toString(Mietvertrag.mietvertragAnzahl));
+            String sdatum = dformat.format(m.getStartdatum());
+            ps.setString(2, sdatum);
+            String edatum = dformat.format(m.getEnddatum());
+            ps.setString(3, edatum);
+            ps.setFloat(4, m.getMiete());
+
+            int b = 0;
+            if(m.getBezahlStatus() == true) {
+                b = 1;
+            }else {
+                b = 0;
+            }
+            ps.setInt(5, b);
+
+            String kk = "-";
+            ps.setString(6, kk);
+            ps.setString(7, auto);
+            ps.setString(8, kunde);
+            ps.setString(9, mitarbeiter);
+
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void removeMietvertrag(Mietvertrag m) {
+        String sql = "DELETE FROM Mietvertrag WHERE Vertrag_Id='" + m.getVertraId()+"'";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateAuto(Mietvertrag mvertrag) {
+
+        /*String farbe = "UPDATE Autos SET Farbe = '" + auto.getFarbe() + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        String km = "UPDATE Autos SET Kilometerstand =  '"+auto.getKilometerstand()+"'  WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        String typ = "UPDATE Autos SET Getriebetyp = '" + auto.getGetriebetyp() + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        String preis = "UPDATE Autos SET Mietpreise =  '" +  auto.getMietpreise() + "'  WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+
+        String verfugbar;
+        if(auto.checkVerfuegbarkeit()== true){
+            verfugbar = "UPDATE Autos SET istVerfuegbar = '" + 1 + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        }else{
+            verfugbar = "UPDATE Autos SET istVerfuegbar =  '" + 0 + "' WHERE Nummernschild = '" + auto.getNummernschild()+"'";
+        }
+
+        try {
+            Statement stm = conn.createStatement();
+            stm.execute(farbe);
+            stm.execute(km);
+            stm.execute(typ);
+            stm.execute(preis);
+            stm.execute(verfugbar);
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }*/
     }
 }

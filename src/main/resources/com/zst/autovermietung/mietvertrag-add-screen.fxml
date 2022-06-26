@@ -39,10 +39,16 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <DatePicker fx:id="geburtsdatumPicker" layoutX="37.0" layoutY="249.0" prefHeight="26.0" prefWidth="158.0" />
-      <DatePicker fx:id="austellungsdatumPicker" layoutX="219.0" layoutY="249.0" prefHeight="26.0" prefWidth="158.0" />
-      <Button layoutX="189.0" layoutY="306.0" mnemonicParsing="false" text="erstellen" />
+      <DatePicker fx:id="startdatumPicker" layoutX="37.0" layoutY="249.0" prefHeight="26.0" prefWidth="158.0" />
+      <DatePicker fx:id="enddatumPicker" layoutX="219.0" layoutY="249.0" prefHeight="26.0" prefWidth="158.0" />
+      <Button fx:id="addMietvertragButton" layoutX="186.0" layoutY="312.0" mnemonicParsing="false" onAction="#addMietvertrag" text="erstellen" />
       <ChoiceBox fx:id="kundeChoice" layoutX="38.0" layoutY="111.0" prefHeight="26.0" prefWidth="170.0" />
       <ChoiceBox fx:id="autoChoice" layoutX="38.0" layoutY="182.0" prefHeight="26.0" prefWidth="170.0" />
+      <Button layoutX="277.0" layoutY="149.0" mnemonicParsing="false" onAction="#berechneMieteButton" text="berechne Miete" />
+      <Label fx:id="mieteLabel" alignment="CENTER" layoutX="273.0" layoutY="185.0" prefHeight="20.0" prefWidth="106.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

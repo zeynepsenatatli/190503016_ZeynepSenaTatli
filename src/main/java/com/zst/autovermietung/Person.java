@@ -32,6 +32,10 @@ public abstract class Person{
 
     }
 
+    public Person(String id){
+        this.tr_id = id;
+    }
+
     public static boolean checkId(String id) {
         if(id.length() == 11 && id.matches("[0-9]+")){
             return true;
