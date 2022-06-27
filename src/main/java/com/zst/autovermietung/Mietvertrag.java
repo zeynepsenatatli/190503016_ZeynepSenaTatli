@@ -1,5 +1,6 @@
 package com.zst.autovermietung;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -81,6 +82,20 @@ public class Mietvertrag{
     public String getEnddatumString() {
         String fdatum = dformat.format(enddatum);
         return fdatum;
+    }
+
+    public static boolean istAktuell(Date edatum) {
+        LocalDate ed = edatum.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+
+        int compareValue = LocalDate.now().compareTo(ed);
+
+        if (compareValue < 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void setMiete(float miete){

@@ -35,16 +35,24 @@ public class MietvertragScreenController implements Initializable {
         mietvertragList.getChildren().clear();
         ArrayList<Mietvertrag> mvertraege = DBautovermietung.getMietvertrag();
         for(int i = 0; i < mvertraege.size(); i++) {
-            mvertraege.get(i).getKunde().getNachname();
-            FXMLLoader mvItem = new FXMLLoader(getClass().getResource("mietvertrag-item.fxml"));
-            try {
-                mietvertragList.getChildren().add(mvItem.load());
-            } catch (IOException e) {
-                e.printStackTrace();
+
+            if(Mietvertrag.istAktuell(mvertraege.get(i).getEnddatum()) || mvertraege.get(i).getBezahlStatus() == false) {
+                FXMLLoader mvItem = new FXMLLoader(getClass().getResource("mietvertrag-item.fxml"));
+                try {
+                    mietvertragList.getChildren().add(mvItem.load());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                MietvertragItemController mvItemController = mvItem.getController();
+                mvItemController.setMietvertrag(mvertraege.get(i));
+            }else if(Mietvertrag.istAktuell(mvertraege.get(i).getEnddatum()) == false || mvertraege.get(i).getBezahlStatus() == true) {
+                updateAutoStatus(mvertraege.get(i));
             }
-            MietvertragItemController mvItemController = mvItem.getController();
-            mvItemController.setMietvertrag(mvertraege.get(i));
         }
+    }
+
+    public void updateAutoStatus(Mietvertrag m) {
+        DBautovermietung.updateAutoVerfugbar(m.getAuto().getNummernschild());
     }
 
     public void openAddScreen(ActionEvent event) throws IOException {
@@ -53,6 +61,20 @@ public class MietvertragScreenController implements Initializable {
         stage = new Stage();
         scene = new Scene(root);
         stage.setTitle("neue Mietvertrag erstellen");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void abgelaufendeMietvertrage() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("abgelaufende-mietvertrag.fxml"));
+        try {
+            root = (Parent) fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setTitle("abgelaufende Mietverträge");
         stage.setScene(scene);
         stage.show();
     }
