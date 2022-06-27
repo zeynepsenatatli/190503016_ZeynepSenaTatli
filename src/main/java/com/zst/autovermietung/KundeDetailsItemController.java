@@ -80,10 +80,28 @@ public class KundeDetailsItemController {
     }
 
     public void removeKunde() throws IOException {
+        boolean c = false;
 
-
-        DBautovermietung.removeKunde(kunde);
-        KundeScreenController.ksc.kundeList();
+        for(Mietvertrag mv : DBautovermietung.getMietvertrag()) {
+            if(mv.getKunde().getId().equals(kunde.getId())) {
+                c = true;
+                break;
+            }
+        }
+        if(c) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            PopUpController popUpController = fxmlLoader.getController();
+            popUpController.setMessage("Dieser Kunde hat einen Mietvertrag. Löschen ist nicht möglich.");
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Warnung!");
+            stage.setScene(scene);
+            stage.show();
+        }else {
+            DBautovermietung.removeKunde(kunde);
+            KundeScreenController.ksc.kundeList();
+        }
 
         Stage s = (Stage) pane.getScene().getWindow();
         s.close();

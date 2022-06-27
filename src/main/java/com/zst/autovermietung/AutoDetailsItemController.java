@@ -65,9 +65,32 @@ public class AutoDetailsItemController {
     Scene scene;
 
     public void removeAuto() {
-
-        DBautovermietung.removeAuto(auto);
-        AutoScreenController.asc.autoList();
+        boolean c = false;
+        for(Mietvertrag mv : DBautovermietung.getMietvertrag()) {
+            if(mv.getAuto().getNummernschild().equals(auto.getNummernschild())) {
+                c = true;
+                break;
+            }
+        }
+        if(c) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
+            Parent root = null;
+            try {
+                root = (Parent) fxmlLoader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            PopUpController popUpController = fxmlLoader.getController();
+            popUpController.setMessage("Dies Auto hat einen Mietvertrag. Löschen ist nicht möglich.");
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Warnung!");
+            stage.setScene(scene);
+            stage.show();
+        }else {
+            DBautovermietung.removeAuto(auto);
+            AutoScreenController.asc.autoList();
+        }
 
         Stage s = (Stage) pane.getScene().getWindow();
         s.close();
