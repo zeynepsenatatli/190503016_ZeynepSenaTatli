@@ -48,6 +48,9 @@ public class KundeDetailsItemController {
     @FXML
     private Label vorstrafenLabel;
 
+    @FXML
+    private Label hatautoLabel;
+
     private Kunde kunde;
 
     public void setKunde(Kunde kunde) {
@@ -68,32 +71,23 @@ public class KundeDetailsItemController {
         }else {
             vorstrafenLabel.setText(kunde.getVorstrafeNote());
         }
+
+        if(kunde.getHatAuto()) {
+            hatautoLabel.setText("ja");
+        }else {
+            hatautoLabel.setText("nein");
+        }
     }
-
-
 
     public void removeKunde() throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up-ja-nein.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
-        PopUpJaNeinController jaNeinController = fxmlLoader.getController();
-        jaNeinController.setMessageLabel("Möchten Sie diesen Kunden wirklich löschen?");
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setTitle("Warnung!");
-        stage.setScene(scene);
-        stage.show();
 
-        if(jaNeinController.jaButton()) {
-            System.out.println("girildi");
-            DBautovermietung.removeKunde(kunde);
-            KundeScreenController.ksc.kundeList();
+        DBautovermietung.removeKunde(kunde);
+        KundeScreenController.ksc.kundeList();
 
-            stage.close();
+        Stage s = (Stage) pane.getScene().getWindow();
+        s.close();
 
-            Stage s = (Stage) pane.getScene().getWindow();
-            s.close();
-        }
     }
 
     Parent root;
@@ -114,7 +108,6 @@ public class KundeDetailsItemController {
         stage.show();
 
     }
-
 
 
     /*@Override

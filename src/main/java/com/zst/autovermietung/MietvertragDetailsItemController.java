@@ -76,28 +76,16 @@ public class MietvertragDetailsItemController {
         }
 
     }
-    public void removeVertrag() throws IOException {
+    public void removeVertrag() {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up-ja-nein.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
-        PopUpJaNeinController jaNeinController = fxmlLoader.getController();
-        jaNeinController.setMessageLabel("Möchten Sie diesen Mietvertrag wirklich löschen?");
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setTitle("Warnung!");
-        stage.setScene(scene);
-        stage.show();
+        DBautovermietung.updateRemoveMietvertragAuto(m.getAuto().getNummernschild());
+        DBautovermietung.updateRemoveMietvertragKunde(m.getKunde().getId());
+        DBautovermietung.removeMietvertrag(m);
+        MietvertragScreenController.msc.mietvertragList();
 
-        if(jaNeinController.jaButton()) {
-            DBautovermietung.updateAutoVerfugbar(m.getAuto().getNummernschild());
-            DBautovermietung.removeMietvertrag(m);
-            MietvertragScreenController.msc.mietvertragList();
+        Stage s = (Stage) pane.getScene().getWindow();
+        s.close();
 
-            stage.close();
-
-            Stage s = (Stage) pane.getScene().getWindow();
-            s.close();
-        }
     }
 
     Parent root;

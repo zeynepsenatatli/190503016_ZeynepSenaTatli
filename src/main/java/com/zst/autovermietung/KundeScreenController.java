@@ -41,6 +41,7 @@ public class KundeScreenController implements Initializable{
 
         kundenList.getChildren().clear();
         ArrayList<Kunde> kunden = DBautovermietung.getKunden();
+
         for(int i = 0; i < kunden.size(); i++) {
             FXMLLoader kundeItem = new FXMLLoader(getClass().getResource("kunde-item.fxml"));
             try {

@@ -26,7 +26,7 @@
             <Label fx:id="adresseLabel" alignment="TOP_LEFT" lineSpacing="4.0" prefHeight="68.0" prefWidth="148.0" snapToPixel="false" text="adressadressadressadressadressadressadressadressadress" wrapText="true" />
          </children>
       </VBox>
-      <VBox layoutX="342.0" layoutY="46.0" prefHeight="110.0" prefWidth="160.0">
+      <VBox layoutX="342.0" layoutY="46.0" prefHeight="139.0" prefWidth="160.0">
          <children>
             <Label contentDisplay="CENTER" prefHeight="2.0" prefWidth="160.0" text="Datum von Fuhrerschein:">
                <font>
@@ -40,6 +40,12 @@
                </font>
             </Label>
             <Label fx:id="vorstrafenLabel" prefHeight="26.0" prefWidth="214.0" text="vortrafen_note" wrapText="true" />
+            <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="hat Auto?">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="hatautoLabel" prefHeight="26.0" prefWidth="214.0" text="hatauto" wrapText="true" />
          </children>
       </VBox>
       <Label fx:id="kundeNameLabel" alignment="CENTER" layoutX="3.0" layoutY="2.0" prefHeight="43.0" prefWidth="510.0" text="Kunde Name ">

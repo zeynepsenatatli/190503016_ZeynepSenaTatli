@@ -15,9 +15,10 @@ public class Kunde extends Person {
     private boolean vorstrafen;
     private String vorstrafen_note;
     private ArrayList<Mietvertrag> alleMietvertraege;
+    private boolean hatAuto;
     public int kunde_anzahl;
 
-    public Kunde(String id, String name, String nachname, String telefonnummer, String geschlecht, Date geburtsdatum, String adresse, Date fuehrerschein, boolean vorstrafen, String vorstrafen_note) {
+    public Kunde(String id, String name, String nachname, String telefonnummer, String geschlecht, Date geburtsdatum, String adresse, Date fuehrerschein, boolean vorstrafen, String vorstrafen_note, boolean hAuto) {
         super(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse);
 
         this.datumVonFuehrerschein = fuehrerschein;
@@ -25,7 +26,7 @@ public class Kunde extends Person {
         this.vorstrafen_note = vorstrafen_note;
 
         this.alter = berechneAlter();
-
+        this.hatAuto = hAuto;
         kunde_anzahl++;
     }
 
@@ -47,8 +48,6 @@ public class Kunde extends Person {
         }
     }
 
-
-    //soll es private sein?
     public void setAlter() {
         this.alter = berechneAlter();
     }
@@ -71,13 +70,20 @@ public class Kunde extends Person {
                 .toLocalDate();
         int a = Period.between(fs, LocalDate.now()).getYears();
 
-        if(a >= 2) {
+        if(a >= 1) {
             return true;
         }else {
             return false;
         }
     }
 
+    public void setHatAuto(boolean b) {
+        this.hatAuto = b;
+    }
+
+    public boolean getHatAuto() {
+        return this.hatAuto;
+    }
 
     public boolean checkFuehrerschein(Date date) {
         return true;
@@ -97,7 +103,8 @@ public class Kunde extends Person {
         return datumVonFuehrerschein;
     }
 
-    public void setVorstrafe(boolean vortrafen) {
+    public void setVorstrafe(boolean vorstrafen) {
+
         this.vorstrafen = vorstrafen;
     }
 

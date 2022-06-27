@@ -45,14 +45,21 @@ public class MietvertragScreenController implements Initializable {
                 }
                 MietvertragItemController mvItemController = mvItem.getController();
                 mvItemController.setMietvertrag(mvertraege.get(i));
-            }else if(Mietvertrag.istAktuell(mvertraege.get(i).getEnddatum()) == false || mvertraege.get(i).getBezahlStatus() == true) {
-                updateAutoStatus(mvertraege.get(i));
             }
+
+            //if(Mietvertrag.istAktuell(mvertraege.get(i).getEnddatum()) == false && mvertraege.get(i).getBezahlStatus() == true) {
+                updateAutoStatus(mvertraege.get(i));
+                updateKundeStatus(mvertraege.get(i));
+            //}
         }
     }
 
+
     public void updateAutoStatus(Mietvertrag m) {
         DBautovermietung.updateAutoVerfugbar(m.getAuto().getNummernschild());
+    }
+    public void updateKundeStatus(Mietvertrag m) {
+        DBautovermietung.updateKundeStatus(m.getKunde().getId());
     }
 
     public void openAddScreen(ActionEvent event) throws IOException {

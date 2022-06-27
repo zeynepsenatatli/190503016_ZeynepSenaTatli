@@ -64,28 +64,14 @@ public class AutoDetailsItemController {
     Stage stage;
     Scene scene;
 
-    public void removeAuto() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up-ja-nein.fxml"));
-        root = (Parent) fxmlLoader.load();
-        PopUpJaNeinController jaNeinController = fxmlLoader.getController();
-        jaNeinController.setMessageLabel("Möchten Sie dies Auto wirklich löschen?");
-        stage = new Stage();
-        scene = new Scene(root);
-        stage.setTitle("Warnung!");
-        stage.setScene(scene);
-        stage.show();
+    public void removeAuto() {
 
-        if(jaNeinController.jaButton()) {
+        DBautovermietung.removeAuto(auto);
+        AutoScreenController.asc.autoList();
 
-            System.out.println("111");
-            DBautovermietung.removeAuto(auto);
-            AutoScreenController.asc.autoList();
+        Stage s = (Stage) pane.getScene().getWindow();
+        s.close();
 
-            stage.close();
-
-            Stage s = (Stage) pane.getScene().getWindow();
-            s.close();
-        }
     }
 
     public void editAuto(ActionEvent event) throws IOException {

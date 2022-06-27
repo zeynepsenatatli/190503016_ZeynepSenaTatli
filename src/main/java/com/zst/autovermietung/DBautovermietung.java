@@ -87,8 +87,15 @@ public class DBautovermietung {
                     vorstrafen = false;
                 }
                 String vorstrafen_note = rs.getString("VorstrafenNote");
+                int h = rs.getInt("HatAuto");
+                boolean hat = false;
+                if(h == 1) {
+                    hat = true;
+                }else {
+                    hat = false;
+                }
 
-                Kunde kunde = new Kunde(tr_id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, datumVonFuhrerschein, vorstrafen, vorstrafen_note);
+                Kunde kunde = new Kunde(tr_id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, datumVonFuhrerschein, vorstrafen, vorstrafen_note, hat);
                 kunden.add(kunde);
             }
         } catch (SQLException e) {
@@ -152,11 +159,18 @@ public class DBautovermietung {
 
     public static void updateKunde(Kunde kunde) {
 
+
         String adress = "UPDATE Kunde SET Adress = '" +kunde.getAdresse() + "' WHERE TrId =  " + kunde.getId();
         String telefonnummer = "UPDATE Kunde SET Telefonnummer ='"+ kunde.getTelefonnummer() + "' WHERE TrId=" + kunde.getId();
         String vorstrafen = "UPDATE Kunde SET VorstrafenNote = '"+ kunde.getVorstrafeNote() + "' WHERE TrId=" + kunde.getId();
         String name = "UPDATE Kunde SET Name= '" + kunde.getName() + "' WHERE TrId=" + kunde.getId();
         String nachname = "UPDATE Kunde SET Nachname= '" + kunde.getNachname()+ "' WHERE TrId=" + kunde.getId();
+        String bool;
+        if(kunde.getVorstrafe()==false) {
+            bool = "UPDATE Kunde SET Vorstrafen= '" + 0 + "' WHERE TrId=" + kunde.getId();
+        }else {
+            bool = "UPDATE Kunde SET Vorstrafen= '" + 1 + "' WHERE TrId=" + kunde.getId();
+        }
 
 
         try {
@@ -166,6 +180,7 @@ public class DBautovermietung {
             statement.execute(vorstrafen);
             statement.execute(name);
             statement.execute(nachname);
+            statement.execute(bool);
 
         }catch (SQLException e) {
             e.printStackTrace();
@@ -287,12 +302,63 @@ public class DBautovermietung {
     public static void updateAutoVerfugbar(String ns) {
         String verfugbar;
 
-        if(getEineAuto(ns).checkVerfuegbarkeit()== true){
-            verfugbar = "UPDATE Autos SET istVerfuegbar = '" + 0 + "' WHERE Nummernschild = '" +ns+"'";
-        }else{
-            verfugbar = "UPDATE Autos SET istVerfuegbar =  '" + 1 + "' WHERE Nummernschild = '" + ns+"'";
+        for(Mietvertrag m : getMietvertrag() ) {
+            if(m.getAuto().getNummernschild().equals(ns) && Mietvertrag.istAktuell(m.getEnddatum()) == true) {
+                verfugbar = "UPDATE Autos SET istVerfuegbar = '" + 0 + "' WHERE Nummernschild = '" +ns+"'";
+                try{
+                    Statement stm = conn.createStatement();
+                    stm.execute(verfugbar);
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }else if(m.getAuto().getNummernschild().equals(ns) && Mietvertrag.istAktuell(m.getEnddatum()) == false){
+                verfugbar = "UPDATE Autos SET istVerfuegbar =  '" + 1 + "' WHERE Nummernschild = '" + ns+"'";
+                try{
+                    Statement stm = conn.createStatement();
+                    stm.execute(verfugbar);
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+    }
 
+    public static void updateKundeStatus(String id) {
+        String hatAuto;
+        Mietvertrag m2 = null;
+        for(Mietvertrag m : getMietvertrag()) {
+            if(m.getKunde().getId().equals(id) && Mietvertrag.istAktuell(m.getEnddatum()) == true) {
+                hatAuto = "UPDATE Kunde SET HatAuto = '" + 1 + "' WHERE TrId = '" +id+"'";
+                try{
+                    Statement stm = conn.createStatement();
+                    stm.execute(hatAuto);
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }else if(m.getKunde().getId().equals(id) && Mietvertrag.istAktuell(m.getEnddatum())== false) {
+                hatAuto = "UPDATE Kunde SET HatAuto =  '" + 0 + "' WHERE TrId = '" + id+"'";
+                try{
+                    Statement stm = conn.createStatement();
+                    stm.execute(hatAuto);
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static void updateRemoveMietvertragKunde(String id) {
+        String hatAuto = "UPDATE Kunde SET HatAuto =  '" + 0 + "' WHERE TrId = '" + id+"'";
+        try{
+            Statement stm = conn.createStatement();
+            stm.execute(hatAuto);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateRemoveMietvertragAuto(String ns) {
+        String verfugbar = "UPDATE Autos SET istVerfuegbar =  '" + 1 + "' WHERE Nummernschild = '" + ns+"'";
         try{
             Statement stm = conn.createStatement();
             stm.execute(verfugbar);
@@ -356,7 +422,14 @@ public class DBautovermietung {
                 }
                 String vorstrafen_note = rs.getString("VorstrafenNote");
 
-                Kunde kunde = new Kunde(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, datumVonFuhrerschein, vorstrafen, vorstrafen_note);
+                int h = rs.getInt("HatAuto");
+                boolean hat = false;
+                if(h == 1) {
+                    hat = true;
+                }else {
+                    hat = false;
+                }
+                Kunde kunde = new Kunde(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, datumVonFuhrerschein, vorstrafen, vorstrafen_note, hat);
 
                 return kunde;
             }

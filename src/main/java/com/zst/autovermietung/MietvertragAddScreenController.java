@@ -44,7 +44,7 @@ public class MietvertragAddScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         for(Kunde k : DBautovermietung.getKunden()) {
-            if(k.getVorstrafe() == false) {
+            if(k.getVorstrafe() == false && k.getHatAuto() == false) {
                 kundeChoice.getItems().add(k.getId() + " - " + k.getName() + " " + k.getNachname());
             }
         }
@@ -146,7 +146,6 @@ public class MietvertragAddScreenController implements Initializable {
             e.printStackTrace();
         }
 
-
         if(exceptione || exceptions || kundechoice || autochoice) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
             Parent root = (Parent) fxmlLoader.load();
@@ -161,6 +160,7 @@ public class MietvertragAddScreenController implements Initializable {
             float miete = Mietvertrag.berechneMiete(startdatum, enddatum, DBautovermietung.getEineAuto(auto).getMietpreise());
             String mitarbeiter = DBautovermietung.getThisBenutzer().getId();
             DBautovermietung.updateAutoVerfugbar(auto);
+            DBautovermietung.updateKundeStatus(kunde);
             DBautovermietung.addMietvertrag(startdatum, enddatum, auto, kunde, miete, mitarbeiter);
             MietvertragScreenController.msc.mietvertragList();
         }

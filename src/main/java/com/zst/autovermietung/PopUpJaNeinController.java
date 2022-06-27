@@ -34,7 +34,6 @@ public class PopUpJaNeinController {
     }
 
     public boolean jaButton() throws IOException {
-
         return true;
     }
 

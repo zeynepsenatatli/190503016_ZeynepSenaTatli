@@ -52,6 +52,9 @@ public class KundeEditController {
     @FXML
     private TextField vorstrafenField;
 
+    @FXML
+    private Label hatautoLabel;
+
     private Kunde kunde;
 
     public void editInfo(Kunde k) {
@@ -63,13 +66,22 @@ public class KundeEditController {
         String adress = adresseField.getText();
         String telefonnummer = telefonField.getText();
         String vorstrafen = vorstrafenField.getText();
+
         String geschlecht = geschlechtField.getText();
         String name = kundeNameField.getText();
         String nachname = kundeNNameField.getText();
 
+
         if(Person.checkTelefon(telefonnummer)) {
             kunde.setTelefonnummer(telefonnummer);
             kunde.setAdresse(adress);
+
+            if(vorstrafen.equals("-")){
+                kunde.setVorstrafe(false);
+            }else {
+                kunde.setVorstrafe(true);
+
+            }
             kunde.setVorstrafeNote(vorstrafen);
             kunde.setGeschlecht(geschlecht);
             kunde.setName(name);
@@ -107,6 +119,12 @@ public class KundeEditController {
             vorstrafenField.setText(kunde.getVorstrafeNote());
         }else {
             vorstrafenField.setText("-");
+        }
+
+        if(kunde.getHatAuto()) {
+            hatautoLabel.setText("ja");
+        }else {
+            hatautoLabel.setText("nein");
         }
     }
    /* @Override
