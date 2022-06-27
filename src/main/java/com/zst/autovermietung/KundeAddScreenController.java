@@ -84,7 +84,7 @@ public class KundeAddScreenController implements Initializable {
             ausdatumexception = true;
         }
 
-         if(id.isEmpty() || name.isEmpty() || nachname.isEmpty() || gdexception || choice
+        if(id.isEmpty() || name.isEmpty() || nachname.isEmpty() || gdexception || choice
                 || telefonnummer.isEmpty() || adresse.isEmpty() || ausdatumexception) {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
@@ -131,6 +131,19 @@ public class KundeAddScreenController implements Initializable {
             stage.setTitle("Warnung!");
             stage.setScene(scene);
             stage.show();
+
+
+        }else if(Kunde.checkFuhrerschein(ausstellungsdatum) == false) {
+
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
+             Parent root = (Parent) fxmlLoader.load();
+             PopUpController popUpController = fxmlLoader.getController();
+             popUpController.setMessage("Der Führerschein ist für die Anmietung eines Autos nicht geeignet.");
+             Stage stage = new Stage();
+             Scene scene = new Scene(root);
+             stage.setTitle("Warnung!");
+             stage.setScene(scene);
+             stage.show();
 
 
         }else {

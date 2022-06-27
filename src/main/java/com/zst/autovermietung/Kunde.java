@@ -47,10 +47,6 @@ public class Kunde extends Person {
         }
     }
 
-    /*public int berechneAlter(Date geburtsdatum) {
-        //alter = heute-gdatum;
-        return 21;
-    }*/
 
     //soll es private sein?
     public void setAlter() {
@@ -67,6 +63,19 @@ public class Kunde extends Person {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
         return Period.between(gb, LocalDate.now()).getYears();
+    }
+
+    public static boolean checkFuhrerschein(Date fuhrerschein) {
+        LocalDate fs = fuhrerschein.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        int a = Period.between(fs, LocalDate.now()).getYears();
+
+        if(a >= 2) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
 
