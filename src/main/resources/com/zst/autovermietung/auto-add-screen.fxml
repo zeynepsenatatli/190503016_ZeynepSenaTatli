@@ -63,11 +63,11 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="getriebetypField" layoutX="219.0" layoutY="292.0" prefHeight="26.0" prefWidth="150.0" />
       <Label layoutX="217.0" layoutY="271.0" text="Getriebetyp">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
+      <ChoiceBox fx:id="getriebetypChoice" layoutX="219.0" layoutY="292.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

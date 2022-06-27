@@ -25,19 +25,38 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        FXMLLoader firsthomeScreen = new FXMLLoader(HelloApplication.class.getResource("first-home-screen.fxml"));
+        screen.getChildren().removeAll();
+        try {
+            screen.getChildren().add(firsthomeScreen.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         usernameLabel.setText(DBautovermietung.getThisBenutzer().getName() + " " + DBautovermietung.getThisBenutzer().getNachname());
     }
 
     public void autoVerwaltung() throws IOException {
-        FXMLLoader autoScreen = new FXMLLoader(HelloApplication.class.getResource("auto-screen.fxml"));
-        screen.getChildren().removeAll();
-        screen.getChildren().add(autoScreen.load());
+        if(DBautovermietung.getThisBenutzer().getRolle().equals("Manager")) {
+            FXMLLoader autoScreen = new FXMLLoader(HelloApplication.class.getResource("auto-screen.fxml"));
+            screen.getChildren().removeAll();
+            screen.getChildren().add(autoScreen.load());
+        }else if(DBautovermietung.getThisBenutzer().getRolle().equals("Mitarbeiter")) {
+            FXMLLoader autoScreen = new FXMLLoader(HelloApplication.class.getResource("auto-screen-fur-mitarbeiter.fxml"));
+            screen.getChildren().removeAll();
+            screen.getChildren().add(autoScreen.load());
+        }
     }
 
     public void mietvertragVerwaltung() throws IOException {
-        FXMLLoader mietvertragScreen = new FXMLLoader(HelloApplication.class.getResource("mietvertrag-screen.fxml"));
-        screen.getChildren().removeAll();
-        screen.getChildren().add(mietvertragScreen.load());
+        if(DBautovermietung.getThisBenutzer().getRolle().equals("Manager")) {
+            FXMLLoader mietvertragScreen = new FXMLLoader(HelloApplication.class.getResource("mietvertrag-screen-fur-manager.fxml"));
+            screen.getChildren().removeAll();
+            screen.getChildren().add(mietvertragScreen.load());
+        }else {
+            FXMLLoader mietvertragScreen = new FXMLLoader(HelloApplication.class.getResource("mietvertrag-screen.fxml"));
+            screen.getChildren().removeAll();
+            screen.getChildren().add(mietvertragScreen.load());
+        }
     }
 
     public void kundeVerwaltung() throws IOException {
@@ -63,6 +82,13 @@ public class HomePageController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void settingButton() throws IOException {
+        FXMLLoader managersettings = new FXMLLoader(HelloApplication.class.getResource("settings-manager.fxml"));
+        screen.getChildren().removeAll();
+        screen.getChildren().add(managersettings.load());
+
     }
 
 

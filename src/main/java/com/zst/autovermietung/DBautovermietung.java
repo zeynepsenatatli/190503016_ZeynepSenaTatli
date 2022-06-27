@@ -56,10 +56,35 @@ public class DBautovermietung {
 
         if(b.getRolle().equals("Mitarbeiter")) {
             return getEineMitarbeiter(b.getId());
-        }else {
-
+        }else if(b.getRolle().equals("Manager")){
+            return getManager(b.getId());
         }
         return null;
+    }
+
+    public static void updateBenutzername(String id, String bn) {
+
+        String bname = "UPDATE Benutzer SET benutzername = '" + bn + "' WHERE trID = '" + id +"'";
+
+        try {
+            Statement stm = conn.createStatement();
+            stm.execute(bname);
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void updatePasswort(String id, String pass) {
+
+        String passwort = "UPDATE Benutzer SET passwort = '" + pass + "' WHERE trID = '" + id +"'";
+
+        try {
+            Statement stm = conn.createStatement();
+            stm.execute(passwort);
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static ArrayList<Kunde> getKunden() {
@@ -293,7 +318,6 @@ public class DBautovermietung {
             stm.execute(preis);
             stm.execute(verfugbar);
 
-
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -457,15 +481,43 @@ public class DBautovermietung {
                 String adresse = rs.getString("Adress");
                 String bname = rs.getString("benutzername");
                 String pass = rs.getString("passwort");
-                //String rolle = rs.getString("rolle");
+                String rolle = rs.getString("rolle");
 
-                mitarbeiter = new Mitarbeiter(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, bname, pass);
+                mitarbeiter = new Mitarbeiter(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, bname, pass, rolle);
             }
 
         }catch(SQLException | ParseException e) {
             e.printStackTrace();
         }
         return mitarbeiter;
+    }
+
+    public static Manager getManager(String id) {
+        Manager manager = null;
+        SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            Statement stmt = DBautovermietung.conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Manager, Benutzer WHERE Manager.TrId = Benutzer.trID AND Benutzer.trID =  '" + id +"'");
+
+            while (rs.next()) {
+                String name = rs.getString("Name");
+                String nachname = rs.getString("Nachname");
+                String sgeburtsdatum = rs.getString("Geburtsdatum");
+                Date geburtsdatum = (Date) dformat.parse(sgeburtsdatum);
+                String geschlecht = rs.getString("Geschlecht");
+                String telefonnummer = rs.getString("Telefonnummer");
+                String adresse = rs.getString("Adress");
+                String bname = rs.getString("benutzername");
+                String pass = rs.getString("passwort");
+                String rolle = rs.getString("rolle");
+
+                manager = new Manager(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, bname, pass, rolle);
+            }
+
+        }catch(SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        return manager;
     }
 
     public static ArrayList<Mietvertrag> getMietvertrag() {

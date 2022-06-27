@@ -40,12 +40,16 @@ public class AutoAddScreenController implements Initializable {
     private TextField mieteField;
 
     @FXML
-    private TextField getriebetypField;
+    private ChoiceBox getriebetypChoice;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         verfugbarkeit.getItems().add("ja");
         verfugbarkeit.getItems().add("nein");
+
+        getriebetypChoice.getItems().add("Automatisch");
+        getriebetypChoice.getItems().add("Manuel");
+
     }
 
     public void autoAddButton() throws IOException {
@@ -57,7 +61,7 @@ public class AutoAddScreenController implements Initializable {
         int km = Integer.parseInt(kmField.getText());
         String nummernschild = nummernschildField.getText();
         float miete = Float.parseFloat(mieteField.getText());
-        String getriebtyp = getriebetypField.getText();
+        String getriebtyp = getriebetypChoice.getValue().toString();
 
         boolean verfugbar = false;
         boolean choice = false;

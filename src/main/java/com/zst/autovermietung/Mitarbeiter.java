@@ -13,6 +13,11 @@ public class Mitarbeiter extends Benutzer{
 
         //this.arbeitetIn = autovermietung;
     }
+    public Mitarbeiter(String id, String name, String nachname, String telefonnummer, String geschlecht, Date geburtsdatum, String adresse, String benutzername, String passwort, String rolle){
+        super(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, benutzername, passwort, rolle);
+
+        //this.arbeitetIn = autovermietung;
+    }
 
     public void addMietvertrag(Mietvertrag m){
         //boolean olabilir

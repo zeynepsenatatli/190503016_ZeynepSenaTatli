@@ -90,7 +90,7 @@
       </Label>
       <Label fx:id="mitidLabel" layoutX="168.0" layoutY="302.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
       <Label fx:id="mitnameLabel" layoutX="168.0" layoutY="321.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Button fx:id="removeVertrag" layoutX="117.0" layoutY="359.0" mnemonicParsing="false" onAction="#removeVertrag" prefHeight="26.0" prefWidth="0.0">
+      <Button fx:id="removeMietvertragButton" layoutX="117.0" layoutY="359.0" mnemonicParsing="false" onAction="#removeVertrag" prefHeight="26.0" prefWidth="0.0">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -99,7 +99,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="editMietvertrag" layoutX="176.0" layoutY="359.0" mnemonicParsing="false" onAction="#editVertrag" prefHeight="26.0" prefWidth="0.0">
+      <Button fx:id="editMietvertragButton" layoutX="176.0" layoutY="359.0" mnemonicParsing="false" onAction="#editVertrag" prefHeight="26.0" prefWidth="0.0">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>

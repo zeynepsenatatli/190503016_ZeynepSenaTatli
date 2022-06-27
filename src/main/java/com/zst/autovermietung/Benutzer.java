@@ -16,6 +16,16 @@ public class Benutzer extends Person{
         this.passwort = passwort;
     }
 
+    public Benutzer(String id, String name, String nachname, String telefonnummer, String geschlecht, Date geburtsdatum, String adresse, String benutzername, String passwort, String rolle){
+        super(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse);
+
+        //ich könnte für benutzername und passwort check-Funktionen
+        //schreiben
+        this.benutzername = benutzername;
+        this.passwort = passwort;
+        this.rolle = rolle;
+    }
+
     public Benutzer(String id, String rolle, String benutzername, String passwort) {
         super(id);
 

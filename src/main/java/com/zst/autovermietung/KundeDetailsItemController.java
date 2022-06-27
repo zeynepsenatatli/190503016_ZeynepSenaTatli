@@ -114,22 +114,22 @@ public class KundeDetailsItemController {
 
     public void editKunde(ActionEvent event) throws IOException {
 
-        FXMLLoader kundeEdit = new FXMLLoader(getClass().getResource("kunde-edit.fxml"));
-        root = kundeEdit.load();
+        if(DBautovermietung.getThisBenutzer().getRolle().equals("Manager")) {
+            FXMLLoader kundeEdit = new FXMLLoader(getClass().getResource("kunde-edit.fxml"));
+            root = kundeEdit.load();
 
-        KundeEditController editController = kundeEdit.getController();
-        editController.editInfo(kunde);
+            KundeEditController editController = kundeEdit.getController();
+            editController.editInfo(kunde);
+        }else if(DBautovermietung.getThisBenutzer().getRolle().equals("Mitarbeiter")) {
+            FXMLLoader kundeEdit = new FXMLLoader(getClass().getResource("kunde-edit-fur-mitarbeiter.fxml"));
+            root = kundeEdit.load();
+            KundeEditFurMietarbeiterController editController = kundeEdit.getController();
+            editController.editInfo(kunde);
+        }
+
         stage =(Stage)((Node)event.getSource()).getScene().getWindow();
-
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
-
-
-    /*@Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //adresseLabel.setText();
-    }*/
 }
