@@ -1,10 +1,15 @@
 package com.zst.autovermietung;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -43,7 +48,7 @@ public class AutoAddScreenController implements Initializable {
         verfugbarkeit.getItems().add("nein");
     }
 
-    public void autoAddButton() {
+    public void autoAddButton() throws IOException {
 
         String modell = ModelField.getText();
         String marke = markeField.getText();
@@ -66,7 +71,47 @@ public class AutoAddScreenController implements Initializable {
             choice = true;
         }
 
-        DBautovermietung.addAuto(new Auto(nummernschild, km, marke, modell, farbe, jahr,verfugbar, miete, getriebtyp));
-        AutoScreenController.asc.autoList();
+
+        if(modell.isEmpty() || marke.isEmpty() ||jahr.isEmpty() ||farbe.isEmpty() || km == 0 || nummernschild.isEmpty() ||
+        miete == 0.0 || getriebtyp.isEmpty() || choice) {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            PopUpController popUpController = fxmlLoader.getController();
+            popUpController.setMessage("Bitte geben Sie alle Informationen vollständig ein!");
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Warnung!");
+            stage.setScene(scene);
+            stage.show();
+
+        }else if(DBautovermietung.checkAuto(nummernschild)) {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            PopUpController popUpController = fxmlLoader.getController();
+            popUpController.setMessage("Dies Auto ist bereit im System gespeichert!");
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Warnung!");
+            stage.setScene(scene);
+            stage.show();
+
+
+        }else if(Auto.checkNummernschild(nummernschild) == false) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            PopUpController popUpController = fxmlLoader.getController();
+            popUpController.setMessage("Das Format von eingegebene Nummernschild ist falsch.");
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Warnung!");
+            stage.setScene(scene);
+            stage.show();
+
+        }else {
+            DBautovermietung.addAuto(new Auto(nummernschild, km, marke, modell, farbe, jahr,verfugbar, miete, getriebtyp));
+            AutoScreenController.asc.autoList();
+        }
     }
 }

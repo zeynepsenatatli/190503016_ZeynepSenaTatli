@@ -66,9 +66,14 @@ public class Auto{
         auto_anzahl++;
     }
 
-    public boolean checkNummernschild(String n){
-        //
-        return true;
+    public static boolean checkNummernschild(String n){
+        String a[] = n.split(" ");
+
+        if(a[0].length() == 2 && a[0].matches("[0-9]+") && a[1].matches("[A-Z]+") && a[2].matches("[0-9]+")){
+            return true;
+        }else {
+            return false;
+        }
     }
     public void setNummernschild(String n){
         this.nummernschild = n;

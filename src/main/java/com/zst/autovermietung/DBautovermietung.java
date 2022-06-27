@@ -194,6 +194,22 @@ public class DBautovermietung {
         return autos;
     }
 
+    public static boolean checkAuto(String ns) {
+        try {
+            PreparedStatement stmt = DBautovermietung.conn.prepareStatement("SELECT * FROM Autos WHERE Nummernschild=?");
+            stmt.setString(1,ns);
+            ResultSet resultSet = stmt.executeQuery();
+            if(resultSet.next()) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
     public static void addAuto(Auto a) {
 
         String sql = "INSERT INTO Autos (Nummernschild, Marke, Modell, Kilometerstand, Getriebetyp, Farbe, Mietpreise, Baujahr, istVerfuegbar) VALUES(?,?,?,?,?,?,?,?,?)";
