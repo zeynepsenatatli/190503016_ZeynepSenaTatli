@@ -145,6 +145,25 @@ public class DBautovermietung {
         }
     }
 
+    public static void updateManager(Manager m) {
+
+        String adress = "UPDATE Manager SET Adress = '" +m.getAdresse() + "' WHERE TrId =  " + m.getId();
+        String telefonnummer = "UPDATE Manager SET Telefonnummer ='"+ m.getTelefonnummer() + "' WHERE TrId=" + m.getId();
+        String name ="UPDATE Manager SET Name ='"+ m.getName() + "' WHERE TrId=" + m.getId();
+        String nachname = "UPDATE Manager SET Nachname ='"+ m.getNachname() + "' WHERE TrId=" + m.getId();
+
+        try {
+            Statement statement = conn.createStatement();
+            statement.execute(adress);
+            statement.execute(telefonnummer);
+            statement.execute(name);
+            statement.execute(nachname);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public static boolean checkMitarbeiter(String id) {
         try {
             PreparedStatement stmt = DBautovermietung.conn.prepareStatement("SELECT * FROM Mitarbeiter WHERE TrId=?");

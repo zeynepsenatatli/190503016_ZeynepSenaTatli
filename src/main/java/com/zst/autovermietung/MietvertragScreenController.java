@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -18,6 +19,9 @@ public class MietvertragScreenController implements Initializable {
 
     @FXML
     private VBox mietvertragList;
+
+    @FXML
+    private CheckBox problem;
 
     private Stage stage;
     private Scene scene;
@@ -50,6 +54,27 @@ public class MietvertragScreenController implements Initializable {
             updateAutoStatus(mvertraege.get(i));
             updateKundeStatus(mvertraege.get(i));
 
+        }
+    }
+
+    public void change(ActionEvent event) {
+        if(problem.isSelected()) {
+            mietvertragList.getChildren().clear();
+            ArrayList<Mietvertrag> mietvertrag = DBautovermietung.getMietvertrag();
+            for(int i = 0; i < mietvertrag.size(); i++) {
+                if(!mietvertrag.get(i).getProblembezeichnung().equals("-")) {
+                    FXMLLoader mvItem = new FXMLLoader(getClass().getResource("mietvertrag-item.fxml"));
+                    try {
+                        mietvertragList.getChildren().add(mvItem.load());
+                        MietvertragItemController itemController = mvItem.getController();
+                        itemController.setMietvertrag(mietvertrag.get(i));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }else {
+            mietvertragList();
         }
     }
 

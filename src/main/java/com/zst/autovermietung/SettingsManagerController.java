@@ -6,9 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -19,13 +17,22 @@ import java.util.ResourceBundle;
 public class SettingsManagerController implements Initializable {
 
     @FXML
+    private TextArea adressField;
+
+    @FXML
     private Label adressLabel;
 
     @FXML
     private PasswordField benutzernameField;
 
     @FXML
+    private Button bnButton;
+
+    @FXML
     private Label bnLabel;
+
+    @FXML
+    private Label bnLabel1;
 
     @FXML
     private AnchorPane bnpane;
@@ -37,13 +44,37 @@ public class SettingsManagerController implements Initializable {
     private Label gdLabel;
 
     @FXML
+    private Label gdLabel1;
+
+    @FXML
     private Label geschlechtLabel;
+
+    @FXML
+    private Label geschlechtLabel1;
 
     @FXML
     private Label idLabel;
 
     @FXML
+    private Label idLabel1;
+
+    @FXML
+    private TextField nachnameField;
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
     private Label nameLabel;
+
+    @FXML
+    private AnchorPane paneInfos;
+
+    @FXML
+    private AnchorPane paneInfos1;
+
+    @FXML
+    private Button passButton;
 
     @FXML
     private PasswordField passField;
@@ -55,20 +86,24 @@ public class SettingsManagerController implements Initializable {
     private Label rolleLabel;
 
     @FXML
+    private Label rolleLabel1;
+
+    @FXML
+    private TextField telefonField;
+
+    @FXML
     private Label telefonnummerLabel;
 
-    @FXML
-    private Button passButton;
-
-    @FXML
-    private Button bnButton;
-
-    private Benutzer m;
+    private Mitarbeiter m;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        m = DBautovermietung.getThisBenutzer();
+        m = (Mitarbeiter) DBautovermietung.getThisBenutzer();
 
+        setInfos();
+    }
+
+    public void setInfos() {
         nameLabel.setText(m.getName()+ " " + m.getNachname());
         rolleLabel.setText(m.getRolle());
         telefonnummerLabel.setText(m.getTelefonnummer());
@@ -83,6 +118,16 @@ public class SettingsManagerController implements Initializable {
         if(m.getRolle().equals("Mitarbeiter")) {
             bnButton.setVisible(false);
         }
+
+        nameField.setText(m.getName());
+        nachnameField.setText(m.getNachname());
+        rolleLabel1.setText(m.getRolle());
+        telefonField.setText(m.getTelefonnummer());
+        idLabel1.setText(m.getId());
+        adressField.setText(m.getAdresse());
+        geschlechtLabel1.setText(m.getGeschlecht());
+        gdLabel1.setText(m.getGeburtsdatumString());
+        bnLabel1.setText(m.getBenutzername());
     }
 
     public void benutzernameAndern(ActionEvent event) {
@@ -107,8 +152,36 @@ public class SettingsManagerController implements Initializable {
         }
     }
 
+    public void editInfos() {
+        paneInfos.setVisible(false);
+        paneInfos1.setVisible(true);
+    }
+
+
+
     public void passwortAndern(ActionEvent event) {
         passPane.setVisible(true);
+    }
+
+    public void updateBenutzer(ActionEvent event) {
+        String name = nameField.getText();
+        String nachname = nachnameField.getText();
+        String adress = adressField.getText();
+        String telefon = telefonField.getText();
+
+        m.setName(name);
+        m.setNachname(nachname);
+        m.setTelefonnummer(telefon);
+        m.setAdresse(adress);
+
+        if(m.getRolle().equals("Mitarbeiter")) {
+            DBautovermietung.updateMitarbeiter(m);
+        }else {
+            DBautovermietung.updateManager(DBautovermietung.getManager(m.getId()));
+        }
+        setInfos();
+        paneInfos1.setVisible(false);
+        paneInfos.setVisible(true);
     }
 
     public void savePasswort() throws IOException {
