@@ -47,10 +47,9 @@ public class MietvertragScreenController implements Initializable {
                 mvItemController.setMietvertrag(mvertraege.get(i));
             }
 
-            //if(Mietvertrag.istAktuell(mvertraege.get(i).getEnddatum()) == false && mvertraege.get(i).getBezahlStatus() == true) {
-                updateAutoStatus(mvertraege.get(i));
-                updateKundeStatus(mvertraege.get(i));
-            //}
+            updateAutoStatus(mvertraege.get(i));
+            updateKundeStatus(mvertraege.get(i));
+
         }
     }
 
