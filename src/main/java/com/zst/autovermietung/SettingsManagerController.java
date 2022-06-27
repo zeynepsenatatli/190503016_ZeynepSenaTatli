@@ -128,5 +128,4 @@ public class SettingsManagerController implements Initializable {
             DBautovermietung.updatePasswort(m.getId(), passwort);
         }
     }
-
 }

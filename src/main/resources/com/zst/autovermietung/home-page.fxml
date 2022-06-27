@@ -58,6 +58,11 @@
                      </image>
                   </ImageView>
                </graphic></Button>
+            <Button fx:id="mitarbeiterButton" layoutX="43.0" layoutY="337.0" mnemonicParsing="false" onAction="#mitarbeiterVerwaltung" prefHeight="27.0" prefWidth="87.0" text="Mitarbeiter">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

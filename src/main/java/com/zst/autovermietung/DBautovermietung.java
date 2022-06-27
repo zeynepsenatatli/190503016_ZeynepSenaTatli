@@ -62,6 +62,46 @@ public class DBautovermietung {
         return null;
     }
 
+    public static ArrayList<Mitarbeiter> getMitarbeiter() {
+        ArrayList<Mitarbeiter> mitarbeiters = new ArrayList<>();
+        SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Statement stmt = DBautovermietung.conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Mitarbeiter, Benutzer WHERE Mitarbeiter.TrId = Benutzer.trID");
+            while (rs.next()) {
+                String id = rs.getString("TrId");
+                String name = rs.getString("Name");
+                String nachname = rs.getString("Nachname");
+                String sgeburtsdatum = rs.getString("Geburtsdatum");
+                Date geburtsdatum = (Date) dformat.parse(sgeburtsdatum);
+                String geschlecht = rs.getString("Geschlecht");
+                String telefonnummer = rs.getString("Telefonnummer");
+                String adresse = rs.getString("Adress");
+                String bname = rs.getString("benutzername");
+                String pass = rs.getString("passwort");
+                String rolle = rs.getString("rolle");
+
+                mitarbeiters.add(new Mitarbeiter(id, name, nachname, telefonnummer, geschlecht, geburtsdatum, adresse, bname, pass, rolle));
+            }
+
+        }catch(SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        return mitarbeiters;
+    }
+
+    public static void removeMitarbeiter(Mitarbeiter m) {
+        String sql = "DELETE FROM Mitarbeiter WHERE TrId=" + m.getId();
+        String sql2 = "DELETE FROM Benutzer WHERE trID=" + m.getId();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.execute();
+            PreparedStatement ps2 = conn.prepareStatement(sql2);
+            ps2.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public static void updateBenutzername(String id, String bn) {
 
         String bname = "UPDATE Benutzer SET benutzername = '" + bn + "' WHERE trID = '" + id +"'";
@@ -83,6 +123,70 @@ public class DBautovermietung {
             stm.execute(passwort);
 
         }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateMitarbeiter(Mitarbeiter m) {
+
+        String adress = "UPDATE Mitarbeiter SET Adress = '" +m.getAdresse() + "' WHERE TrId =  " + m.getId();
+        String telefonnummer = "UPDATE Mitarbeiter SET Telefonnummer ='"+ m.getTelefonnummer() + "' WHERE TrId=" + m.getId();
+        String name ="UPDATE Mitarbeiter SET Name ='"+ m.getName() + "' WHERE TrId=" + m.getId();
+        String nachname = "UPDATE Mitarbeiter SET Nachname ='"+ m.getNachname() + "' WHERE TrId=" + m.getId();
+
+        try {
+            Statement statement = conn.createStatement();
+            statement.execute(adress);
+            statement.execute(telefonnummer);
+            statement.execute(name);
+            statement.execute(nachname);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean checkMitarbeiter(String id) {
+        try {
+            PreparedStatement stmt = DBautovermietung.conn.prepareStatement("SELECT * FROM Mitarbeiter WHERE TrId=?");
+            stmt.setString(1,id);
+            ResultSet resultSet = stmt.executeQuery();
+            if(resultSet.next()) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    public static void addMitarbeiter(Mitarbeiter m) {
+
+        String sql = "INSERT INTO Mitarbeiter (TrId, Name, Nachname, Geburtsdatum, Geschlecht, Telefonnummer, Adress) VALUES(?,?,?,?,?,?,?)";
+        String sql2 = "INSERT INTO Benutzer (benutzername, passwort, rolle, trID) VALUES(?,?,?,?)";
+        SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, m.getId());
+            ps.setString(2, m.getName());
+            ps.setString(3, m.getNachname());
+            String gdatum = dformat.format(m.getGeburtsdatum());
+            ps.setString(4, gdatum);
+            ps.setString(5, m.getGeschlecht());
+            ps.setString(6, m.getTelefonnummer());
+            ps.setString(7, m.getAdresse());
+
+            ps.executeUpdate();
+
+            PreparedStatement ps2 = conn.prepareStatement(sql2);
+            ps2.setString(1, m.getBenutzername());
+            ps2.setString(2, m.getPasswort());
+            ps2.setString(2, m.getRolle());
+            ps2.setString(2, m.getId());
+
+            ps2.executeUpdate();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -150,7 +254,6 @@ public class DBautovermietung {
 
         String sql = "INSERT INTO Kunde (TrId, Name, Nachname, Geburtsdatum, K_Alter, Geschlecht, Telefonnummer, Adress, DatumVonFuhrerschein) VALUES(?,?,?,?,?,?,?,?,?)";
         SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
-
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, k.getId());
@@ -183,7 +286,6 @@ public class DBautovermietung {
     }
 
     public static void updateKunde(Kunde kunde) {
-
 
         String adress = "UPDATE Kunde SET Adress = '" +kunde.getAdresse() + "' WHERE TrId =  " + kunde.getId();
         String telefonnummer = "UPDATE Kunde SET Telefonnummer ='"+ kunde.getTelefonnummer() + "' WHERE TrId=" + kunde.getId();

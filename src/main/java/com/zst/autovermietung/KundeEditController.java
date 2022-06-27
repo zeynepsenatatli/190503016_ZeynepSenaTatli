@@ -71,7 +71,6 @@ public class KundeEditController {
         String name = kundeNameField.getText();
         String nachname = kundeNNameField.getText();
 
-
         if(Person.checkTelefon(telefonnummer)) {
             kunde.setTelefonnummer(telefonnummer);
             kunde.setAdresse(adress);

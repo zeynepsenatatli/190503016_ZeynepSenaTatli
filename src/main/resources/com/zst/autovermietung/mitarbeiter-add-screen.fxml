@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.MitarbeiterAddScreenController">
+   <children>
+      <Label layoutX="80.0" layoutY="36.0" prefHeight="30.0" prefWidth="280.0" text="Neue Mitarbeiter hinzufügen" textFill="#214565" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="77.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="91.0" text="TR-Identitätsnummer">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="162.0" text="Name">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="219.0" layoutY="162.0" text="Nachname">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="238.0" text="Telefonnummer">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="304.0" prefHeight="20.0" prefWidth="98.0" text="Geburtsdatum">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="219.0" layoutY="238.0" text="Adresse">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="geburtsdatumPicker" layoutX="37.0" layoutY="324.0" prefHeight="26.0" prefWidth="158.0" />
+      <TextArea fx:id="adresseText" layoutX="219.0" layoutY="258.0" prefHeight="0.0" prefWidth="182.0" />
+      <TextField fx:id="telefonnummerText" layoutX="36.0" layoutY="258.0" />
+      <TextField fx:id="nameText" layoutX="37.0" layoutY="182.0" />
+      <TextField fx:id="nachnameText" layoutX="219.0" layoutY="182.0" />
+      <TextField fx:id="trIdText" layoutX="37.0" layoutY="111.0" />
+      <Button layoutX="198.0" layoutY="432.0" mnemonicParsing="false" onAction="#addMitarbeiter">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/save.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <ChoiceBox fx:id="geschlechtChoice" layoutX="220.0" layoutY="324.0" prefHeight="26.0" prefWidth="150.0" />
+      <Label layoutX="219.0" layoutY="304.0" text="Geschlecht">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="365.0" text="Benutzername">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="220.0" layoutY="365.0" text="Passwort">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="benutzernameField" layoutX="38.0" layoutY="385.0" />
+      <TextField fx:id="passwortField" layoutX="220.0" layoutY="385.0" />
+   </children>
+</AnchorPane>

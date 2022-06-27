@@ -98,5 +98,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="377.0" layoutY="203.0" mnemonicParsing="false" text="alle Mietverträge" />
    </children>
 </AnchorPane>

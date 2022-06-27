@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -23,6 +24,9 @@ public class HomePageController implements Initializable {
     @FXML
     private Label usernameLabel;
 
+    @FXML
+    private Button mitarbeiterButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         FXMLLoader firsthomeScreen = new FXMLLoader(HelloApplication.class.getResource("first-home-screen.fxml"));
@@ -31,6 +35,9 @@ public class HomePageController implements Initializable {
             screen.getChildren().add(firsthomeScreen.load());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        if(DBautovermietung.getThisBenutzer().getRolle().equals("Mitarbeiter")) {
+            mitarbeiterButton.setVisible(false);
         }
         usernameLabel.setText(DBautovermietung.getThisBenutzer().getName() + " " + DBautovermietung.getThisBenutzer().getNachname());
     }
@@ -69,6 +76,12 @@ public class HomePageController implements Initializable {
         FXMLLoader firstHomeScreen = new FXMLLoader(HelloApplication.class.getResource("first-home-screen.fxml"));
         screen.getChildren().removeAll();
         screen.getChildren().add(firstHomeScreen.load());
+    }
+
+    public void mitarbeiterVerwaltung() throws IOException {
+        FXMLLoader mitarbeiter = new FXMLLoader(HelloApplication.class.getResource("mitarbeiter-screen.fxml"));
+        screen.getChildren().removeAll();
+        screen.getChildren().add(mitarbeiter.load());
     }
 
     private Stage stage;
