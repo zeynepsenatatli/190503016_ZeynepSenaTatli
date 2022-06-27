@@ -130,7 +130,8 @@ public class MietvertragAddScreenController implements Initializable {
         String kunde = null;
         boolean kundechoice = false;
         try {
-            kunde = kundeChoice.getValue().toString();
+            String a[] = kundeChoice.getValue().toString().split(" ");
+            kunde = a[0];
         } catch(NullPointerException e) {
             kundechoice = true;
         }
@@ -159,6 +160,7 @@ public class MietvertragAddScreenController implements Initializable {
         }else {
             float miete = Mietvertrag.berechneMiete(startdatum, enddatum, DBautovermietung.getEineAuto(auto).getMietpreise());
             String mitarbeiter = DBautovermietung.getThisBenutzer().getId();
+            DBautovermietung.updateAutoVerfugbar(auto);
             DBautovermietung.addMietvertrag(startdatum, enddatum, auto, kunde, miete, mitarbeiter);
             MietvertragScreenController.msc.mietvertragList();
         }

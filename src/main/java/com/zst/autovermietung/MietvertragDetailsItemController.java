@@ -89,6 +89,7 @@ public class MietvertragDetailsItemController {
         stage.show();
 
         if(jaNeinController.jaButton()) {
+            DBautovermietung.updateAutoVerfugbar(m.getAuto().getNummernschild());
             DBautovermietung.removeMietvertrag(m);
             MietvertragScreenController.msc.mietvertragList();
 

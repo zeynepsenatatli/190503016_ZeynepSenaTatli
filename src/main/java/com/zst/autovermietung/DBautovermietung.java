@@ -41,6 +41,7 @@ public class DBautovermietung {
                 String id = resultSet.getString("trID");
                 String rolle = resultSet.getString("rolle");
                 b = new Benutzer(id, rolle, benutzername, passwort);
+                getThisBenutzer();
                 return true;
             }else {
                 return false;
@@ -52,7 +53,13 @@ public class DBautovermietung {
     }
 
     public static Benutzer getThisBenutzer() {
-        return b;
+
+        if(b.getRolle().equals("Mitarbeiter")) {
+            return getEineMitarbeiter(b.getId());
+        }else {
+
+        }
+        return null;
     }
 
     public static ArrayList<Kunde> getKunden() {
@@ -277,6 +284,23 @@ public class DBautovermietung {
         }
     }
 
+    public static void updateAutoVerfugbar(String ns) {
+        String verfugbar;
+
+        if(getEineAuto(ns).checkVerfuegbarkeit()== true){
+            verfugbar = "UPDATE Autos SET istVerfuegbar = '" + 0 + "' WHERE Nummernschild = '" +ns+"'";
+        }else{
+            verfugbar = "UPDATE Autos SET istVerfuegbar =  '" + 1 + "' WHERE Nummernschild = '" + ns+"'";
+        }
+
+        try{
+            Statement stm = conn.createStatement();
+            stm.execute(verfugbar);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Auto getEineAuto(String ns) {
         Auto auto = null;
         try{
@@ -348,7 +372,7 @@ public class DBautovermietung {
         SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
         try{
             Statement stmt = DBautovermietung.conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Mitarbeiter, Benutzer WHERE Mitarbeiter.TrId = Benutzer.trId");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Mitarbeiter, Benutzer WHERE Mitarbeiter.TrId = Benutzer.trID AND Benutzer.trID =  '" + id +"'");
 
             while (rs.next()) {
                 String name = rs.getString("Name");
@@ -410,7 +434,7 @@ public class DBautovermietung {
 
     public static void addMietvertrag( Date s, Date e, String auto, String kunde, float miete, String mitarbeiter) {
 
-        String sql = "INSERT INTO Mietvertrag (Vertrag_Id, Startdatum, Enddatum, Miete, Autonummernschild, istBezahlt, Problembezeichnung, KundeTrId, VerantwortlicheMitarbeiter) VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Mietvertrag (Vertrag_Id, Startdatum, Enddatum, Miete, istBezahlt, Problembezeichnung, Autonummernschild, KundeTrId, VerantwortlicheMitarbeiter) VALUES(?,?,?,?,?,?,?,?,?)";
         Mietvertrag m = new Mietvertrag(Integer.toString(Mietvertrag.mietvertragAnzahl), s, e, getEineAuto(auto), getEineKunde(kunde), getEineMitarbeiter(mitarbeiter), miete, false, "-");
         SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
 

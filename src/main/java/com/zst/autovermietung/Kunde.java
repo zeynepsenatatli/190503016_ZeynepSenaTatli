@@ -39,13 +39,12 @@ public class Kunde extends Person {
     }
 
 
-    public boolean checkAlter(int alter) {
+    public static boolean checkAlter(int alter) {
         if (alter >= 21) {
             return true;
         } else {
             return false;
         }
-
     }
 
     /*public int berechneAlter(Date geburtsdatum) {

@@ -94,7 +94,7 @@
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/icons8-delete-48%20-%20Kopya.png" />
+                  <Image url="@images/icons8-delete-48 - Kopya.png" />
                </image>
             </ImageView>
          </graphic>
@@ -103,7 +103,7 @@
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/icons8-edit-48%20-%20Kopya.png" />
+                  <Image url="@images/icons8-edit-48 - Kopya.png" />
                </image>
             </ImageView>
          </graphic>

@@ -134,9 +134,22 @@ public class KundeAddScreenController implements Initializable {
 
 
         }else {
+             Kunde kunde = new Kunde(id, name, nachname, telefonnummer, geschlecht, geburtsdatum , adresse, ausstellungsdatum);
+             if(Kunde.checkAlter(kunde.getAlter())) {
+                 DBautovermietung.addKunde(kunde);
+                 KundeScreenController.ksc.kundeList();
+             }else {
+                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
+                 Parent root = (Parent) fxmlLoader.load();
+                 PopUpController popUpController = fxmlLoader.getController();
+                 popUpController.setMessage("Eingegebene Kunde ist jünger als 21.");
+                 Stage stage = new Stage();
+                 Scene scene = new Scene(root);
+                 stage.setTitle("Warnung!");
+                 stage.setScene(scene);
+                 stage.show();
+             }
 
-            DBautovermietung.addKunde(new Kunde(id, name, nachname, telefonnummer, geschlecht, geburtsdatum , adresse, ausstellungsdatum));
-            KundeScreenController.ksc.kundeList();
         }
     }
 }
