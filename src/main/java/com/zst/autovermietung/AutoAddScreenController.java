@@ -58,9 +58,20 @@ public class AutoAddScreenController implements Initializable {
         String marke = markeField.getText();
         String jahr = jahrField.getText();
         String farbe = farbeField.getText();
-        int km = Integer.parseInt(kmField.getText());
+        int km;
+        if(kmField.getText().equals("")){
+            km = 0;
+        }else {
+            km = Integer.parseInt(kmField.getText());
+        }
         String nummernschild = nummernschildField.getText();
-        float miete = Float.parseFloat(mieteField.getText());
+        float miete;
+        if(mieteField.getText().equals("")){
+            miete = 0;
+        }else {
+            miete = Float.parseFloat(mieteField.getText());
+        }
+
         String getriebtyp = getriebetypChoice.getValue().toString();
 
         boolean verfugbar = false;
@@ -77,7 +88,7 @@ public class AutoAddScreenController implements Initializable {
 
 
         if(modell.isEmpty() || marke.isEmpty() ||jahr.isEmpty() ||farbe.isEmpty() || km == 0 || nummernschild.isEmpty() ||
-        miete == 0.0 || getriebtyp.isEmpty() || choice) {
+        miete == 0 || getriebtyp.isEmpty() || choice) {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pop-up.fxml"));
             Parent root = (Parent) fxmlLoader.load();

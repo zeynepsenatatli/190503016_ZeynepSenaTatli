@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -41,7 +43,14 @@
       </Label>
       <DatePicker fx:id="startdatumPicker" layoutX="37.0" layoutY="249.0" prefHeight="26.0" prefWidth="158.0" />
       <DatePicker fx:id="enddatumPicker" layoutX="219.0" layoutY="249.0" prefHeight="26.0" prefWidth="158.0" />
-      <Button fx:id="addMietvertragButton" layoutX="186.0" layoutY="312.0" mnemonicParsing="false" onAction="#addMietvertrag" text="erstellen" />
+      <Button fx:id="addMietvertragButton" layoutX="199.0" layoutY="301.0" mnemonicParsing="false" onAction="#addMietvertrag">
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/save.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <ChoiceBox fx:id="kundeChoice" layoutX="38.0" layoutY="111.0" prefHeight="26.0" prefWidth="170.0" />
       <ChoiceBox fx:id="autoChoice" layoutX="38.0" layoutY="182.0" prefHeight="26.0" prefWidth="170.0" />
       <Button layoutX="277.0" layoutY="149.0" mnemonicParsing="false" onAction="#berechneMieteButton" text="berechne Miete" />

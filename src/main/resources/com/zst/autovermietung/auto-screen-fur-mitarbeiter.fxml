@@ -4,14 +4,15 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="690.0" style="-fx-background-color: #EAEFF3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.AutoScreenFurMitarbeiterController">
    <children>
-      <Label layoutX="23.0" layoutY="14.0" text="Auto-Verwaltung" textFill="#101861">
+      <Label layoutX="25.0" layoutY="21.0" text="Auto-Verwaltung" textFill="#101861">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Label>
       <ScrollPane layoutX="25.0" layoutY="106.0" prefHeight="330.0" prefWidth="639.0">
@@ -22,5 +23,31 @@
             <Blend />
          </effect>
       </ScrollPane>
+      <HBox layoutX="25.0" layoutY="79.0" prefHeight="26.0" prefWidth="639.0" style="-fx-background-color: #466289;">
+         <children>
+            <Label text=" " />
+            <Label prefHeight="18.0" prefWidth="32.0" text="     " />
+            <Label fx:id="nummernschildLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="137.0" text="Nummernschild" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="markemodellLabel" alignment="CENTER" prefHeight="51.0" prefWidth="134.0" text="Marke &amp; Modell" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="mietpreisLabel" alignment="CENTER" prefHeight="26.0" prefWidth="107.0" text="Miete/täglich" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="verfügbar" alignment="CENTER" prefHeight="26.0" prefWidth="111.0" text="istVefügbar?" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

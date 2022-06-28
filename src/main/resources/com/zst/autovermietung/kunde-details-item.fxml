@@ -12,40 +12,55 @@
    <children>
       <VBox layoutX="182.0" layoutY="40.0" prefHeight="179.0" prefWidth="148.0">
          <children>
-            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="194.0" text="Telefonnummer:">
+            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="194.0" text="Telefonnummer:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="telefonnummerLabel" prefHeight="22.0" prefWidth="194.0" text="telefon" />
-            <Label contentDisplay="CENTER" prefHeight="31.0" prefWidth="138.0" text="Adresse:">
+            <Label fx:id="telefonnummerLabel" prefHeight="22.0" prefWidth="194.0" text="telefon">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" prefHeight="31.0" prefWidth="138.0" text="Adresse:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="adresseLabel" alignment="TOP_LEFT" lineSpacing="4.0" prefHeight="68.0" prefWidth="148.0" snapToPixel="false" text="adressadressadressadressadressadressadressadressadress" wrapText="true" />
+            <Label fx:id="adresseLabel" alignment="TOP_LEFT" lineSpacing="4.0" prefHeight="68.0" prefWidth="148.0" snapToPixel="false" text="adressadressadressadressadressadressadressadressadress" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
          </children>
       </VBox>
       <VBox layoutX="342.0" layoutY="46.0" prefHeight="139.0" prefWidth="160.0">
          <children>
-            <Label contentDisplay="CENTER" prefHeight="2.0" prefWidth="160.0" text="Datum von Fuhrerschein:">
+            <Label contentDisplay="CENTER" prefHeight="2.0" prefWidth="160.0" text="Datum von Fuhrerschein:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="fuhrerscheinLabel" prefHeight="26.0" prefWidth="214.0" text="fuhrerscheindatum" />
-            <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="Vorstrafen">
+            <Label fx:id="fuhrerscheinLabel" prefHeight="26.0" prefWidth="214.0" text="fuhrerscheindatum">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="Vorstrafen" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="vorstrafenLabel" prefHeight="26.0" prefWidth="214.0" text="vortrafen_note" wrapText="true" />
-            <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="hat Auto?">
+            <Label fx:id="vorstrafenLabel" prefHeight="26.0" prefWidth="214.0" text="vortrafen_note" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="hat Auto?" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="hatautoLabel" prefHeight="26.0" prefWidth="214.0" text="hatauto" wrapText="true" />
+            <Label fx:id="hatautoLabel" prefHeight="26.0" prefWidth="214.0" text="hatauto" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
          </children>
       </VBox>
       <Label fx:id="kundeNameLabel" alignment="CENTER" layoutX="3.0" layoutY="2.0" prefHeight="43.0" prefWidth="510.0" text="Kunde Name ">
@@ -55,30 +70,42 @@
       </Label>
       <VBox layoutX="22.0" layoutY="40.0" prefHeight="238.0" prefWidth="160.0">
          <children>
-            <Label contentDisplay="CENTER" prefHeight="21.0" prefWidth="114.0" text="TR-ID-Nummer:">
+            <Label contentDisplay="CENTER" prefHeight="21.0" prefWidth="114.0" text="TR-ID-Nummer:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="idLabel" prefHeight="26.0" prefWidth="215.0" text="id" />
-            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="214.0" text="Geburtsdatum:">
+            <Label fx:id="idLabel" prefHeight="26.0" prefWidth="215.0" text="id">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="214.0" text="Geburtsdatum:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="geburtsdatum" prefHeight="27.0" prefWidth="214.0" text="geburtsdatum" />
-            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="214.0" text="Alter:">
+            <Label fx:id="geburtsdatum" prefHeight="27.0" prefWidth="214.0" text="geburtsdatum">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="214.0" text="Alter:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="alterLabel" prefHeight="23.0" prefWidth="179.0" text="alter" />
-            <Label contentDisplay="CENTER" prefHeight="28.0" prefWidth="197.0" text="Geschlecht:">
+            <Label fx:id="alterLabel" prefHeight="23.0" prefWidth="179.0" text="alter">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" prefHeight="28.0" prefWidth="197.0" text="Geschlecht:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="geschlechtLabel" prefHeight="27.0" prefWidth="140.0" text="geschlecht" />
+            <Label fx:id="geschlechtLabel" prefHeight="27.0" prefWidth="140.0" text="geschlecht">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
          </children>
       </VBox>
       <Button layoutX="262.0" layoutY="202.0" mnemonicParsing="false" onAction="#editKunde" prefHeight="19.0" prefWidth="36.0">

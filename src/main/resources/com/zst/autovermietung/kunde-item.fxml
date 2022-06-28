@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="638.0" style="-fx-background-color: #C8D7E3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.KundeItemController">
    <children>
-      <HBox prefHeight="42.0" prefWidth="469.0">
+      <HBox prefHeight="42.0" prefWidth="505.0">
          <children>
             <AnchorPane prefHeight="40.0" prefWidth="39.0">
                <children>
@@ -20,12 +20,13 @@
                      </image>
                   </ImageView>
                </children></AnchorPane>
-            <Label fx:id="idLabel" alignment="CENTER" prefHeight="42.0" prefWidth="142.0" text="TC-IDNUMMER" textAlignment="CENTER" />
-            <Label fx:id="fullnameLabel" alignment="CENTER" prefHeight="42.0" prefWidth="168.0" text="NAME + NACHNAME" textAlignment="CENTER" />
+            <Label fx:id="idLabel" alignment="CENTER" prefHeight="42.0" prefWidth="118.0" text="TC-IDNUMMER" textAlignment="CENTER" />
+            <Label fx:id="fullnameLabel" alignment="CENTER" prefHeight="42.0" prefWidth="156.0" text="NAME + NACHNAME" textAlignment="CENTER" wrapText="true" />
             <Label fx:id="telefonnummerLabel" alignment="CENTER" prefHeight="42.0" prefWidth="124.0" text="Telefonnummer" textAlignment="CENTER" />
+            <Label fx:id="hatAutoLabel" alignment="CENTER" prefHeight="42.0" prefWidth="69.0" text="hatauto" textAlignment="CENTER" wrapText="true" />
          </children>
       </HBox>
-      <Button fx:id="mehrButton" layoutX="481.0" layoutY="8.0" mnemonicParsing="false" onAction="#mehrInformationen" prefHeight="26.0" prefWidth="142.0" text="mehr Informationen">
+      <Button fx:id="mehrButton" layoutX="506.0" layoutY="8.0" mnemonicParsing="false" onAction="#mehrInformationen" prefHeight="26.0" prefWidth="123.0" text="mehr Informationen">
          <font>
             <Font size="11.0" />
          </font>

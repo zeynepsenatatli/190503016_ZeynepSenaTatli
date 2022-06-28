@@ -29,6 +29,9 @@ public class MietvertragItemController {
     @FXML
     private Label vertragidLabel;
 
+    @FXML
+    private Label bezahlt;
+
     private Mietvertrag m;
     SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");
     public void setMietvertrag(Mietvertrag m) {
@@ -42,6 +45,12 @@ public class MietvertragItemController {
         s = dformat.format(m.getStartdatum());
         startdatumLabel.setText(s);
         vertragidLabel.setText(m.getVertraId());
+
+        if(m.getBezahlStatus()) {
+            bezahlt.setText("ja");
+        }else {
+            bezahlt.setText("nein");
+        }
     }
 
     Parent root;

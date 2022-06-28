@@ -20,47 +20,47 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="screen" layoutX="168.0" layoutY="128.0" prefHeight="451.0" prefWidth="686.0" style="-fx-background-color: #EAEFF3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="172.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="58.3" />
-      <AnchorPane layoutY="46.0" prefHeight="463.0" prefWidth="172.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="58.0">
+      <AnchorPane layoutY="46.0" prefHeight="463.0" prefWidth="172.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="58.0">
          <children>
-            <Button fx:id="homepageButton" layoutX="42.0" layoutY="163.0" mnemonicParsing="false" onAction="#firstHomePage" prefHeight="27.0" prefWidth="87.0" style="-fx-background-color: #00000;" text="Homepage" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="43.0">
+            <Button fx:id="homepageButton" layoutX="-1.0" layoutY="143.0" mnemonicParsing="false" onAction="#firstHomePage" prefHeight="27.0" prefWidth="172.0" style="-fx-background-color: #ffffff;" text="Homepage" textFill="#e49826" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="16.0" />
                </font></Button>
-            <Button fx:id="autosButton" layoutX="57.0" layoutY="212.0" mnemonicParsing="false" onAction="#autoVerwaltung" prefHeight="27.0" prefWidth="57.0" text="Autos" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="58.0">
+            <Button fx:id="autosButton" layoutX="-3.0" layoutY="180.0" mnemonicParsing="false" onAction="#autoVerwaltung" prefHeight="38.0" prefWidth="172.0" style="-fx-background-color: #ffffff;" text="Autos" textFill="#e49826" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="16.0" />
                </font></Button>
-            <Button fx:id="kundenButton" layoutX="49.0" layoutY="293.0" mnemonicParsing="false" onAction="#kundeVerwaltung" prefHeight="27.0" prefWidth="75.0" text="Kunden" AnchorPane.leftAnchor="49.0" AnchorPane.rightAnchor="48.0">
+            <Button fx:id="kundenButton" layoutX="-3.0" layoutY="256.0" mnemonicParsing="false" onAction="#kundeVerwaltung" prefHeight="31.0" prefWidth="172.0" style="-fx-background-color: #ffffff;" text="Kunden" textFill="#e49826" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="16.0" />
                </font></Button>
-            <Button fx:id="mietvertragButton" layoutX="35.0" layoutY="253.0" mnemonicParsing="false" onAction="#mietvertragVerwaltung" prefHeight="27.0" prefWidth="100.0" text="Mietverträge" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="37.0">
+            <Button fx:id="mietvertragButton" layoutY="218.0" mnemonicParsing="false" onAction="#mietvertragVerwaltung" prefHeight="38.0" prefWidth="172.0" style="-fx-background-color: #ffffff;" text="Mietverträge" textFill="#e49826" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="16.0" />
                </font></Button>
-            <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="33.0" prefHeight="48.0" prefWidth="166.0" text="USER">
+            <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="39.0" prefHeight="38.0" prefWidth="166.0" text="USER">
                <cursor>
                   <Cursor fx:constant="NONE" />
                </cursor>
                <font>
-                  <Font size="18.0" />
+                  <Font size="17.0" />
                </font>
             </Label>
-            <Button fx:id="logoutButton" layoutX="50.0" layoutY="403.0" mnemonicParsing="false" onAction="#logOut" prefHeight="27.0" prefWidth="65.0" text="Log out" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="57.0">
+            <Button fx:id="logoutButton" layoutX="2.0" layoutY="403.0" mnemonicParsing="false" onAction="#logOut" prefHeight="31.0" prefWidth="166.0" style="-fx-background-color: #ffffff;" text="Log out" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="4.0">
                <font>
-                  <Font size="13.0" />
+                  <Font size="15.0" />
                </font></Button>
-            <Button layoutX="48.0" layoutY="87.0" mnemonicParsing="false" onAction="#settingButton" prefHeight="27.0" prefWidth="75.0">
+            <Button layoutX="-1.0" layoutY="77.0" mnemonicParsing="false" onAction="#settingButton" prefHeight="37.0" prefWidth="172.0" style="-fx-background-color: #ffffff;">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/settings.png" />
+                        <Image url="@images/grisettings.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="mitarbeiterButton" layoutX="43.0" layoutY="337.0" mnemonicParsing="false" onAction="#mitarbeiterVerwaltung" prefHeight="27.0" prefWidth="87.0" text="Mitarbeiter">
+            <Button fx:id="mitarbeiterButton" layoutX="-3.0" layoutY="293.0" mnemonicParsing="false" onAction="#mitarbeiterVerwaltung" prefHeight="38.0" prefWidth="172.0" style="-fx-background-color: #ffffff;" text="Mitarbeiter" textFill="#e49826">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Button>
          </children>

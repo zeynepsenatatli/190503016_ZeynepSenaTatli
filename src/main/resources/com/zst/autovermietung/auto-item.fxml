@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.AutoItemController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="632.0" style="-fx-background-color: #C8D7E3;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.AutoItemController">
    <children>
       <HBox layoutY="-1.0" prefHeight="51.0" prefWidth="632.0">
          <children>
@@ -20,8 +20,8 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Label fx:id="nummernschildLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="150.0" text="nummernschildLabel" />
-            <Label fx:id="markemodellLabel" alignment="CENTER" prefHeight="51.0" prefWidth="123.0" text="marke+modell" />
+            <Label fx:id="nummernschildLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="137.0" text="nummernschildLabel" />
+            <Label fx:id="markemodellLabel" alignment="CENTER" prefHeight="51.0" prefWidth="134.0" text="marke+modell" />
             <Label fx:id="mietpreisLabel" alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="41.0" text="Label" />
             <AnchorPane prefHeight="51.0" prefWidth="5.0">
                <children>
@@ -32,8 +32,8 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Label prefHeight="51.0" prefWidth="68.0" text=" /Month" />
-            <Label fx:id="verfügbar" prefHeight="51.0" prefWidth="64.0" text="Verfügbar" />
+            <Label prefHeight="51.0" prefWidth="68.0" text=" /Tag" />
+            <Label fx:id="verfügbar" prefHeight="51.0" prefWidth="64.0" text="Verfügbar" wrapText="true" />
             <AnchorPane prefHeight="51.0" prefWidth="117.0">
                <children>
                   <Button fx:id="mehrInfo" layoutX="22.0" layoutY="13.0" mnemonicParsing="false" onAction="#mehrInfos" text="mehr Infos" />

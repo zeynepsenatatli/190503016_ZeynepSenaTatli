@@ -9,62 +9,62 @@
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="312.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.AutoDetailsItemController">
    <children>
-      <ImageView fitHeight="134.0" fitWidth="232.0" layoutX="89.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="110.0" fitWidth="108.0" layoutX="98.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/caricon.png" />
          </image>
       </ImageView>
-      <Label fx:id="nummernschildLabel" alignment="CENTER" layoutX="-3.0" layoutY="148.0" prefHeight="22.0" prefWidth="319.0" text="Nummernschild">
+      <Label fx:id="nummernschildLabel" alignment="CENTER" layoutX="-4.0" layoutY="122.0" prefHeight="22.0" prefWidth="319.0" text="Nummernschild">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="markemodellLabel" alignment="CENTER" layoutX="-2.0" layoutY="180.0" prefHeight="19.0" prefWidth="312.0" text="Marke Modell  ">
+      <Label fx:id="markemodellLabel" alignment="CENTER" layoutY="148.0" prefHeight="19.0" prefWidth="312.0" text="Marke Modell  ">
          <font>
-            <Font size="13.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="jahrLabel" alignment="CENTER" layoutX="-2.0" layoutY="199.0" prefHeight="19.0" prefWidth="312.0" text="Jahr">
+      <Label fx:id="jahrLabel" alignment="CENTER" layoutX="-4.0" layoutY="169.0" prefHeight="19.0" prefWidth="312.0" text="Jahr">
          <font>
-            <Font size="13.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="253.0" prefHeight="19.0" prefWidth="154.0" text="Farbe:">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="farbeLabel" layoutX="160.0" layoutY="253.0" prefHeight="19.0" prefWidth="154.0" text="farbe">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="272.0" prefHeight="19.0" prefWidth="154.0" text="Kilometerstand:">
+      <Label alignment="CENTER_RIGHT" layoutX="2.0" layoutY="235.0" prefHeight="19.0" prefWidth="154.0" text="Farbe:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="kmLabel" layoutX="160.0" layoutY="272.0" prefHeight="19.0" prefWidth="154.0" text="km">
+      <Label fx:id="farbeLabel" layoutX="163.0" layoutY="235.0" prefHeight="19.0" prefWidth="154.0" text="farbe">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="233.0" prefHeight="19.0" prefWidth="154.0" text="Mietepreis:">
+      <Label alignment="CENTER_RIGHT" layoutX="2.0" layoutY="261.0" prefHeight="19.0" prefWidth="154.0" text="Kilometerstand:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="mieteLabel" layoutX="160.0" layoutY="233.0" prefHeight="19.0" prefWidth="154.0" text="Miete">
+      <Label fx:id="kmLabel" layoutX="163.0" layoutY="261.0" prefHeight="19.0" prefWidth="154.0" text="km">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="-2.0" layoutY="291.0" prefHeight="19.0" prefWidth="154.0" text="Getriebetyp:">
+      <Label alignment="CENTER_RIGHT" layoutX="2.0" layoutY="209.0" prefHeight="19.0" prefWidth="154.0" text="Mietepreis:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="getriebeLabel" layoutX="160.0" layoutY="291.0" prefHeight="19.0" prefWidth="154.0" text="GetriebeTyp">
+      <Label fx:id="mieteLabel" layoutX="163.0" layoutY="209.0" prefHeight="19.0" prefWidth="154.0" text="Miete">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="286.0" prefHeight="19.0" prefWidth="154.0" text="Getriebetyp:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="getriebeLabel" layoutX="161.0" layoutY="286.0" prefHeight="19.0" prefWidth="154.0" text="GetriebeTyp">
          <font>
             <Font size="13.0" />
          </font>

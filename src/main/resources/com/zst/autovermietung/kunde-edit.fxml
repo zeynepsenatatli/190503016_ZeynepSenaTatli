@@ -12,73 +12,100 @@
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.KundeEditController">
    <children>
-      <VBox layoutX="182.0" layoutY="40.0" prefHeight="179.0" prefWidth="148.0">
+      <VBox layoutX="180.0" layoutY="52.0" prefHeight="162.0" prefWidth="148.0">
          <children>
-            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="194.0" text="Telefonnummer:">
+            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="194.0" text="Telefonnummer:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="telefonField" prefHeight="0.0" prefWidth="148.0" />
-            <Label contentDisplay="CENTER" prefHeight="31.0" prefWidth="138.0" text="Adresse:">
+            <TextField fx:id="telefonField" prefHeight="0.0" prefWidth="148.0">
+               <font>
+                  <Font size="13.0" />
+               </font></TextField>
+            <Label contentDisplay="CENTER" prefHeight="31.0" prefWidth="138.0" text="Adresse:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextArea fx:id="adresseField" prefHeight="70.0" prefWidth="148.0" />
+            <TextArea fx:id="adresseField" prefHeight="70.0" prefWidth="148.0">
+               <font>
+                  <Font size="13.0" />
+               </font></TextArea>
          </children>
       </VBox>
-      <VBox layoutX="342.0" layoutY="46.0" prefHeight="179.0" prefWidth="155.0">
+      <VBox layoutX="340.0" layoutY="58.0" prefHeight="179.0" prefWidth="155.0">
          <children>
-            <Label contentDisplay="CENTER" prefHeight="2.0" prefWidth="160.0" text="Datum von Fuhrerschein:">
+            <Label contentDisplay="CENTER" prefHeight="2.0" prefWidth="160.0" text="Datum von Fuhrerschein:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="fuhrerscheinLabel" prefHeight="26.0" prefWidth="214.0" text="fuhrerscheindatum" />
-            <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="Vorstrafen">
+            <Label fx:id="fuhrerscheinLabel" prefHeight="26.0" prefWidth="214.0" text="fuhrerscheindatum">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="204.0" text="Vorstrafen" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="vorstrafenField" prefHeight="26.0" prefWidth="130.0" />
-            <Label contentDisplay="CENTER" prefHeight="25.0" prefWidth="155.0" text="hat Auto?">
+            <TextField fx:id="vorstrafenField" prefHeight="26.0" prefWidth="130.0">
+               <font>
+                  <Font size="13.0" />
+               </font></TextField>
+            <Label contentDisplay="CENTER" prefHeight="25.0" prefWidth="155.0" text="hat Auto?" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="hatautoLabel" prefHeight="19.0" prefWidth="155.0" text="hatauto" wrapText="true" />
+            <Label fx:id="hatautoLabel" prefHeight="19.0" prefWidth="155.0" text="hatauto" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
          </children>
       </VBox>
-      <VBox layoutX="22.0" layoutY="40.0" prefHeight="238.0" prefWidth="148.0">
+      <VBox layoutX="20.0" layoutY="52.0" prefHeight="238.0" prefWidth="148.0">
          <children>
-            <Label contentDisplay="CENTER" prefHeight="21.0" prefWidth="114.0" text="TR-ID-Nummer:">
+            <Label contentDisplay="CENTER" prefHeight="21.0" prefWidth="114.0" text="TR-ID-Nummer:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="idLabel" prefHeight="26.0" prefWidth="215.0" text="id" />
-            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="214.0" text="Geburtsdatum:">
+            <Label fx:id="idLabel" prefHeight="26.0" prefWidth="215.0" text="id">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="214.0" text="Geburtsdatum:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="gbLabel" prefHeight="18.0" prefWidth="148.0" text="Label" />
-            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="214.0" text="Alter:">
+            <Label fx:id="gbLabel" prefHeight="18.0" prefWidth="148.0" text="Label">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" prefHeight="23.0" prefWidth="214.0" text="Alter:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="alterLabel" prefHeight="23.0" prefWidth="179.0" text="alter" />
-            <Label contentDisplay="CENTER" prefHeight="28.0" prefWidth="197.0" text="Geschlecht:">
+            <Label fx:id="alterLabel" prefHeight="23.0" prefWidth="179.0" text="alter">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" prefHeight="28.0" prefWidth="197.0" text="Geschlecht:" textFill="#101861">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="geschlechtField" />
+            <TextField fx:id="geschlechtField">
+               <font>
+                  <Font size="13.0" />
+               </font></TextField>
          </children>
       </VBox>
-      <Button fx:id="editInfo" layoutX="237.0" layoutY="205.0" mnemonicParsing="false" onAction="#saveInfos" prefHeight="19.0" prefWidth="36.0">
+      <Button fx:id="editInfo" layoutX="237.0" layoutY="214.0" mnemonicParsing="false" onAction="#saveInfos" prefHeight="19.0" prefWidth="36.0">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -87,12 +114,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="kundeNameField" layoutX="125.0" layoutY="2.0" prefHeight="22.0" prefWidth="114.0">
+      <TextField fx:id="kundeNameField" layoutX="123.0" layoutY="14.0" prefHeight="22.0" prefWidth="114.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="kundeNNameField" layoutX="263.0" layoutY="2.0" prefHeight="6.0" prefWidth="114.0">
+      <TextField fx:id="kundeNNameField" layoutX="261.0" layoutY="14.0" prefHeight="6.0" prefWidth="114.0">
          <font>
             <Font size="18.0" />
          </font>

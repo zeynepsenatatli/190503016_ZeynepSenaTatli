@@ -95,39 +95,72 @@ public class SettingsManagerController implements Initializable {
     private Label telefonnummerLabel;
 
     private Mitarbeiter m;
+    private Manager manager;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        m = (Mitarbeiter) DBautovermietung.getThisBenutzer();
+
+        if(DBautovermietung.getThisBenutzer().getRolle().equals("Mitarbeiter")) {
+            m = (Mitarbeiter) DBautovermietung.getThisBenutzer();
+        }else {
+            manager = (Manager) DBautovermietung.getThisBenutzer();
+        }
 
         setInfos();
     }
 
     public void setInfos() {
-        nameLabel.setText(m.getName()+ " " + m.getNachname());
-        rolleLabel.setText(m.getRolle());
-        telefonnummerLabel.setText(m.getTelefonnummer());
-        idLabel.setText(m.getId());
-        adressLabel.setText(m.getAdresse());
-        geschlechtLabel.setText(m.getGeschlecht());
-        gdLabel.setText(m.getGeburtsdatumString());
-        bnLabel.setText(m.getBenutzername());
-        passPane.setVisible(false);
-        bnpane.setVisible(false);
 
-        if(m.getRolle().equals("Mitarbeiter")) {
-            bnButton.setVisible(false);
+        if(DBautovermietung.getThisBenutzer().getRolle().equals("Mitarbeiter")) {
+            nameLabel.setText(m.getName()+ " " + m.getNachname());
+            rolleLabel.setText(m.getRolle());
+            telefonnummerLabel.setText(m.getTelefonnummer());
+            idLabel.setText(m.getId());
+            adressLabel.setText(m.getAdresse());
+            geschlechtLabel.setText(m.getGeschlecht());
+            gdLabel.setText(m.getGeburtsdatumString());
+            bnLabel.setText(m.getBenutzername());
+            passPane.setVisible(false);
+            bnpane.setVisible(false);
+
+            if(m.getRolle().equals("Mitarbeiter")) {
+                bnButton.setVisible(false);
+            }
+
+            nameField.setText(m.getName());
+            nachnameField.setText(m.getNachname());
+            rolleLabel1.setText(m.getRolle());
+            telefonField.setText(m.getTelefonnummer());
+            idLabel1.setText(m.getId());
+            adressField.setText(m.getAdresse());
+            geschlechtLabel1.setText(m.getGeschlecht());
+            gdLabel1.setText(m.getGeburtsdatumString());
+            bnLabel1.setText(m.getBenutzername());
+        }else {
+            nameLabel.setText(manager.getName()+ " " + manager.getNachname());
+            rolleLabel.setText(manager.getRolle());
+            telefonnummerLabel.setText(manager.getTelefonnummer());
+            idLabel.setText(manager.getId());
+            adressLabel.setText(manager.getAdresse());
+            geschlechtLabel.setText(manager.getGeschlecht());
+            gdLabel.setText(manager.getGeburtsdatumString());
+            bnLabel.setText(manager.getBenutzername());
+            passPane.setVisible(false);
+            bnpane.setVisible(false);
+
+
+            nameField.setText(manager.getName());
+            nachnameField.setText(manager.getNachname());
+            rolleLabel1.setText(manager.getRolle());
+            telefonField.setText(manager.getTelefonnummer());
+            idLabel1.setText(manager.getId());
+            adressField.setText(manager.getAdresse());
+            geschlechtLabel1.setText(manager.getGeschlecht());
+            gdLabel1.setText(manager.getGeburtsdatumString());
+            bnLabel1.setText(manager.getBenutzername());
         }
 
-        nameField.setText(m.getName());
-        nachnameField.setText(m.getNachname());
-        rolleLabel1.setText(m.getRolle());
-        telefonField.setText(m.getTelefonnummer());
-        idLabel1.setText(m.getId());
-        adressField.setText(m.getAdresse());
-        geschlechtLabel1.setText(m.getGeschlecht());
-        gdLabel1.setText(m.getGeburtsdatumString());
-        bnLabel1.setText(m.getBenutzername());
     }
 
     public void benutzernameAndern(ActionEvent event) {
@@ -148,7 +181,12 @@ public class SettingsManagerController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }else {
-            DBautovermietung.updateBenutzername(m.getId(), bname);
+            if(DBautovermietung.getThisBenutzer().getRolle().equals("Mitarbeiter")) {
+                DBautovermietung.updateBenutzername(m.getId(), bname);
+            }else {
+                DBautovermietung.updateBenutzername(manager.getId(),bname);
+            }
+
         }
     }
 
@@ -164,20 +202,25 @@ public class SettingsManagerController implements Initializable {
     }
 
     public void updateBenutzer(ActionEvent event) {
+
         String name = nameField.getText();
         String nachname = nachnameField.getText();
         String adress = adressField.getText();
         String telefon = telefonField.getText();
 
-        m.setName(name);
-        m.setNachname(nachname);
-        m.setTelefonnummer(telefon);
-        m.setAdresse(adress);
+        if(DBautovermietung.getThisBenutzer().getRolle().equals("Mitarbeiter")) {
+            m.setName(name);
+            m.setNachname(nachname);
+            m.setTelefonnummer(telefon);
+            m.setAdresse(adress);
 
-        if(m.getRolle().equals("Mitarbeiter")) {
             DBautovermietung.updateMitarbeiter(m);
         }else {
-            DBautovermietung.updateManager(DBautovermietung.getManager(m.getId()));
+            manager.setName(name);
+            manager.setNachname(nachname);
+            manager.setTelefonnummer(telefon);
+            manager.setAdresse(adress);
+            DBautovermietung.updateManager(manager);
         }
         setInfos();
         paneInfos1.setVisible(false);
@@ -198,7 +241,12 @@ public class SettingsManagerController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }else {
-            DBautovermietung.updatePasswort(m.getId(), passwort);
+            if(DBautovermietung.getThisBenutzer().getRolle().equals("Mitarbeiter")) {
+                DBautovermietung.updatePasswort(m.getId(), passwort);
+            }else {
+                DBautovermietung.updatePasswort(manager.getId(), passwort);
+            }
+
         }
     }
 }

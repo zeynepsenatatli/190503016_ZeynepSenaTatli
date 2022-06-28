@@ -27,13 +27,22 @@ public class KundeItemController {
     @FXML
     private Button mehrButton;
 
+    @FXML
+    private Label hatAutoLabel;
+
     private Kunde kunde;
 
     public void setKundeItem(Kunde k) {
+        kunde = k;
         fullnameLabel.setText(k.getName() + " " + k.getNachname());
         idLabel.setText(k.getId());
         telefonnummerLabel.setText(k.getTelefonnummer());
-        kunde = k;
+        if(kunde.getHatAuto()) {
+            hatAutoLabel.setText("ja");
+        }else {
+            hatAutoLabel.setText("nein");
+        }
+
     }
 
     private Stage stage;

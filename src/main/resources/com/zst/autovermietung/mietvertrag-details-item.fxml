@@ -7,90 +7,123 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="324.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.MietvertragDetailsItemController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="324.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.MietvertragDetailsItemController">
    <children>
       <Label alignment="CENTER" layoutY="22.0" prefHeight="22.0" prefWidth="324.0" text="Vertrag-ID:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
       <Label fx:id="vertragidLabel" alignment="CENTER" layoutY="45.0" prefHeight="19.0" prefWidth="324.0" text="İD">
          <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutY="88.0" prefHeight="19.0" prefWidth="162.0" text="Kunde-ID:" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutY="107.0" prefHeight="19.0" prefWidth="162.0" text="Kunde-Name:" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutY="126.0" prefHeight="19.0" prefWidth="162.0" text="Auto-Nummernschild:" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutY="145.0" prefHeight="40.0" prefWidth="162.0" text="Marke-Modell-Baujahr von Auto:" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutY="185.0" prefHeight="19.0" prefWidth="162.0" text="Mietpreis:" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutY="204.0" prefHeight="19.0" prefWidth="162.0" text="ist Bezahlt?:" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutY="223.0" prefHeight="19.0" prefWidth="162.0" text="Startdatum von Miete:" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutY="242.0" prefHeight="19.0" prefWidth="162.0" text="Enddatum von Miete:" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="kundeidLabel" layoutX="168.0" layoutY="89.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true">
+         <font>
             <Font size="13.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" layoutY="81.0" prefHeight="19.0" prefWidth="162.0" text="Kunde-ID:" wrapText="true">
+         </font></Label>
+      <Label fx:id="kundenameLabel" layoutX="168.0" layoutY="107.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="nsLabel" layoutX="168.0" layoutY="126.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="markemodelljahrLabel" layoutX="168.0" layoutY="145.0" prefHeight="40.0" prefWidth="156.0" text="mmj" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="mieteLabel" layoutX="168.0" layoutY="185.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="istBezahltLabel" layoutX="168.0" layoutY="204.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="sdatumLabel" layoutX="168.0" layoutY="223.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="edatumLabel" layoutX="168.0" layoutY="242.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="problemLabel" layoutX="168.0" layoutY="261.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label alignment="CENTER_RIGHT" layoutY="260.0" prefHeight="19.0" prefWidth="162.0" text="Problembezeichnung:" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutY="100.0" prefHeight="19.0" prefWidth="162.0" text="Kunde-Name:" wrapText="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="279.0" prefHeight="40.0" prefWidth="324.0" text="Verantwortliche Mitarbeiter:" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutY="309.0" prefHeight="19.0" prefWidth="162.0" text="ID:" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutY="119.0" prefHeight="19.0" prefWidth="162.0" text="Auto-Nummernschild:" wrapText="true">
+      <Label alignment="CENTER_RIGHT" layoutY="328.0" prefHeight="19.0" prefWidth="162.0" text="Name:" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutY="138.0" prefHeight="40.0" prefWidth="162.0" text="Marke-Modell-Baujahr von Auto:" textAlignment="RIGHT" wrapText="true">
+      <Label fx:id="mitidLabel" layoutX="168.0" layoutY="309.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true">
          <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" layoutY="178.0" prefHeight="19.0" prefWidth="162.0" text="Mietpreis:" wrapText="true">
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="mitnameLabel" layoutX="168.0" layoutY="328.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true">
          <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" layoutY="197.0" prefHeight="19.0" prefWidth="162.0" text="ist Bezahlt?:" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" layoutY="216.0" prefHeight="19.0" prefWidth="162.0" text="Startdatum von Miete:" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" layoutY="235.0" prefHeight="19.0" prefWidth="162.0" text="Enddatum von Miete:" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="kundeidLabel" layoutX="168.0" layoutY="82.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Label fx:id="kundenameLabel" layoutX="168.0" layoutY="100.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Label fx:id="nsLabel" layoutX="168.0" layoutY="119.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Label fx:id="markemodelljahrLabel" layoutX="168.0" layoutY="138.0" prefHeight="40.0" prefWidth="156.0" text="mmj" wrapText="true" />
-      <Label fx:id="mieteLabel" layoutX="168.0" layoutY="178.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Label fx:id="istBezahltLabel" layoutX="168.0" layoutY="197.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Label fx:id="sdatumLabel" layoutX="168.0" layoutY="216.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Label fx:id="edatumLabel" layoutX="168.0" layoutY="235.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Label fx:id="problemLabel" layoutX="168.0" layoutY="254.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Label alignment="CENTER_RIGHT" layoutY="253.0" prefHeight="19.0" prefWidth="162.0" text="Problembezeichnung:" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="272.0" prefHeight="40.0" prefWidth="324.0" text="Verantwortliche Mitarbeiter:" textAlignment="RIGHT" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" layoutY="302.0" prefHeight="19.0" prefWidth="162.0" text="ID:" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" layoutY="321.0" prefHeight="19.0" prefWidth="162.0" text="Name:" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="mitidLabel" layoutX="168.0" layoutY="302.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Label fx:id="mitnameLabel" layoutX="168.0" layoutY="321.0" prefHeight="18.0" prefWidth="156.0" text="Label" wrapText="true" />
-      <Button fx:id="removeMietvertragButton" layoutX="117.0" layoutY="359.0" mnemonicParsing="false" onAction="#removeVertrag" prefHeight="26.0" prefWidth="0.0">
+            <Font size="13.0" />
+         </font></Label>
+      <Button fx:id="removeMietvertragButton" layoutX="115.0" layoutY="378.0" mnemonicParsing="false" onAction="#removeVertrag" prefHeight="26.0" prefWidth="0.0">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -99,7 +132,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="editMietvertragButton" layoutX="176.0" layoutY="359.0" mnemonicParsing="false" onAction="#editVertrag" prefHeight="26.0" prefWidth="0.0">
+      <Button fx:id="editMietvertragButton" layoutX="174.0" layoutY="378.0" mnemonicParsing="false" onAction="#editVertrag" prefHeight="26.0" prefWidth="0.0">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>

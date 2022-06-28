@@ -13,7 +13,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label fx:id="messageLabel" alignment="CENTER" layoutX="-1.0" layoutY="83.0" prefHeight="54.0" prefWidth="330.0" text="Dieser Kunde ist bereit im System gespeichert!" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="7.0" layoutY="83.0" prefHeight="67.0" prefWidth="316.0" text="Dieser Kunde ist bereit im System gespeichert!" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>

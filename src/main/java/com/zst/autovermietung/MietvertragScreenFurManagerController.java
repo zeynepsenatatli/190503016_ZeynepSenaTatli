@@ -23,6 +23,9 @@ public class MietvertragScreenFurManagerController implements Initializable {
     @FXML
     private CheckBox problem;
 
+    @FXML
+    private CheckBox bezahlt;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -78,6 +81,26 @@ public class MietvertragScreenFurManagerController implements Initializable {
         }
     }
 
+    public void bezahlteChange(ActionEvent event) {
+        if(bezahlt.isSelected()) {
+            mietvertragList.getChildren().clear();
+            ArrayList<Mietvertrag> mietvertrag = DBautovermietung.getMietvertrag();
+            for(int i = 0; i < mietvertrag.size(); i++) {
+                if(Mietvertrag.istAktuell(mietvertrag.get(i).getEnddatum()) && mietvertrag.get(i).getBezahlStatus()) {
+                    FXMLLoader mvItem = new FXMLLoader(getClass().getResource("mietvertrag-item.fxml"));
+                    try {
+                        mietvertragList.getChildren().add(mvItem.load());
+                        MietvertragItemController itemController = mvItem.getController();
+                        itemController.setMietvertrag(mietvertrag.get(i));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }else {
+            mietvertragList();
+        }
+    }
 
     public void updateAutoStatus(Mietvertrag m) {
         DBautovermietung.updateAutoVerfugbar(m.getAuto().getNummernschild());

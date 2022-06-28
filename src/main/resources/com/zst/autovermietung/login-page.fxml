@@ -4,27 +4,46 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="464.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.LoginPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="464.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zst.autovermietung.LoginPageController">
    <children>
-      <Label fx:id="benutzernameLabel" layoutX="103.0" layoutY="170.0" text="Benutzername:" wrapText="true">
+      <Label fx:id="benutzernameLabel" layoutX="104.0" layoutY="209.0" text="Benutzername:" wrapText="true">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label fx:id="passwortLabel" layoutX="103.0" layoutY="205.0" text="Passwort:">
+      <Label fx:id="passwortLabel" layoutX="104.0" layoutY="244.0" text="Passwort:">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Label>
-      <TextField fx:id="benutzernameText" layoutX="215.0" layoutY="165.0" prefHeight="26.0" prefWidth="141.0" promptText="Benutzername" />
-      <PasswordField fx:id="passwortText" layoutX="215.0" layoutY="200.0" prefHeight="26.0" prefWidth="142.0" promptText="Passwort" />
-      <Label fx:id="loginTitle" layoutX="44.0" layoutY="83.0" text="AUTOVERMIETUNG-SYSTEM" textFill="#113fb4">
+      <TextField fx:id="benutzernameText" layoutX="216.0" layoutY="204.0" prefHeight="26.0" prefWidth="141.0" promptText="Benutzername">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <PasswordField fx:id="passwortText" layoutX="216.0" layoutY="239.0" prefHeight="26.0" prefWidth="142.0" promptText="Passwort">
+         <font>
+            <Font size="14.0" />
+         </font></PasswordField>
+      <Label fx:id="loginTitle" layoutX="45.0" layoutY="122.0" text="AUTOVERMIETUNG-SYSTEM" textFill="#113fb4">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="207.0" layoutY="268.0" mnemonicParsing="false" onAction="#login" text="Log in" />
-      <Label fx:id="messageLabel" alignment="CENTER" layoutX="1.0" layoutY="131.0" prefHeight="18.0" prefWidth="464.0" textAlignment="CENTER" />
+      <Button fx:id="loginButton" layoutX="116.0" layoutY="283.0" mnemonicParsing="false" onAction="#login" prefHeight="60.0" prefWidth="232.0" style="-fx-background-color: #ffffff;" text="LOG IN" textFill="#101861">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Button>
+      <Label fx:id="messageLabel" alignment="CENTER" layoutY="175.0" prefHeight="18.0" prefWidth="464.0" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <ImageView fitHeight="88.0" fitWidth="217.0" layoutX="125.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/5278232-car-logo-png-free-transparent-png-logos-car-logo-png-448_157_preview%20-%20Kopya.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
